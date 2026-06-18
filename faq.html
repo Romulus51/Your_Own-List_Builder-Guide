@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>FAQ — Halo Flashpoint List Builder</title>
+<meta name="description" content="Answers to common questions about setup, data ownership, pricing, and how this compares to Mantic's official app."/>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-logo">FLASHPOINT <span>LIST BUILDER</span></div>
+    <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation">&#9776;</button>
+    <nav class="site-nav">
+      <a href="index.html">Overview</a>
+      <a href="setup.html">Setup Guide</a>
+      <a href="features.html">Features</a>
+      <a href="faq.html" class="active">FAQ</a>
+    </nav>
+    <a href="#" class="site-cta">Get the App &rarr;</a>
+  </div>
+</header>
+
+<section class="hero" style="padding:64px 24px 48px;">
+  <div class="hero-eyebrow">FAQ</div>
+  <h1 style="font-size:42px;">Questions, answered directly</h1>
+</section>
+
+<div class="page" style="padding-bottom:96px; max-width:820px;">
+
+  <div class="section-label" style="margin-top:0;">Ownership &amp; Trust</div>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+        Do you have access to my roster data or my Sheet?
+        <span class="faq-q-mark">+</span>
+      </div>
+      <div class="faq-a">
+        <p>No. Your Sheet lives in your own Google Drive, and your Apps Script deployment runs under your own Google account. I never see, store, or have access to any of it. The app itself, once you've hosted it, talks directly between your browser and your own Google account — there's no third server in between.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+        What happens if you stop supporting this, or take the page down?
+        <span class="faq-q-mark">+</span>
+      </div>
+      <div class="faq-a">
+        <p>Nothing changes for you. You're hosting your own copy of the app, on your own GitHub or Cloudflare account, connected to your own Sheet. Once it's set up, it doesn't depend on me, this website, or any service I run staying online. That's the whole point of building it this way.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+        The Apps Script deployment setting says "Who has access: Anyone" — is that safe?
+        <span class="faq-q-mark">+</span>
+      </div>
+      <div class="faq-a">
+        <p>Yes. This setting controls who can call the script's web address, not who can browse your Drive or edit your Sheet. The URL itself is long and effectively unguessable, and the script only exposes the specific read-only actions written into it — there's no way to reach anything else in your Google account through it. This is the standard way Apps Script web apps are deployed.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+        Can I edit the app's code myself?
+        <span class="faq-q-mark">+</span>
+      </div>
+      <div class="faq-a">
+        <p>Yes — it's a single, readable HTML file, and once you've bought it, it's yours to modify however you like. I can't promise support for heavily modified versions, but there's nothing locking you out of the code.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label" style="margin-top:56px;">Setup &amp; Technical</div>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+        I'm not very technical. Can I actually do this?
+        <span class="faq-q-mark">+</span>
+      </div>
+      <div class="faq-a">
+        <p>If you can follow a recipe, you can follow the <a href="setup.html">setup guide</a> — it's the same handful of steps every time, with a screenshot for each one. It's worth reading through it before buying anything, specifically to check this for yourself: everything except the final app file is free to look at first.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+        Will I hit any usage limits?
+        <span class="faq-q-mark">+</span>
+      </div>
+      <div class="faq-a">
+        <p>Google's free Apps Script tier allows around 20,000 requests a day and roughly 90 minutes of total script runtime per day, per Google account. For one person using their own list builder for their own games, this is far more headroom than you'll ever use — these limits matter for someone trying to serve hundreds of people from a single account, not for personal use.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+        Do I need to know how to code?
+        <span class="faq-q-mark">+</span>
+      </div>
+      <div class="faq-a">
+        <p>No. The Apps Script step involves pasting in a complete, ready-to-use script — you're not writing anything from scratch. The same goes for the Supabase setup script, if you choose to use that optional step.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+        Can I update the card data later — new units, errata, etc.?
+        <span class="faq-q-mark">+</span>
+      </div>
+      <div class="faq-a">
+        <p>Yes, any time. Just edit your Google Sheet directly — add a row, fix a typo, update a stat — and refresh the app. There's no redeployment needed for data changes, only for changes to the app's code itself.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+        What if I lose my Apps Script URL or Supabase keys?
+        <span class="faq-q-mark">+</span>
+      </div>
+      <div class="faq-a">
+        <p>You can always retrieve them again from your own Apps Script and Supabase dashboards — nothing is single-use or expires. You can also update them at any time from <strong>Settings &rarr; Edit Connections</strong> inside the app, without needing to re-host anything.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label" style="margin-top:56px;">Pricing &amp; Purchase</div>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+        What exactly do I get when I pay?
+        <span class="faq-q-mark">+</span>
+      </div>
+      <div class="faq-a">
+        <p>The app's <code>index.html</code> file, the Apps Script code (<code>Code.gs</code>), and the optional Supabase setup script. Everything else — the Sheet template, this whole guide, every screenshot — is free, with no account or payment required.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+        Is this a subscription?
+        <span class="faq-q-mark">+</span>
+      </div>
+      <div class="faq-a">
+        <p>No. It's a one-time purchase. There's no recurring charge, ever, for any part of this setup — Google Sheets, Apps Script, GitHub Pages, and the free tier of Supabase all stay free for personal use at this scale.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+        Do I get future updates?
+        <span class="faq-q-mark">+</span>
+      </div>
+      <div class="faq-a">
+        <p>Yes — updates to the app file are included. Since it's a single file, updating just means downloading the new version and re-uploading it to your GitHub or Cloudflare project; your Sheet, your connections, and your saved rosters are untouched by an update.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label" style="margin-top:56px;">About the Project</div>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+        Is this affiliated with Mantic Games or 343 Industries?
+        <span class="faq-q-mark">+</span>
+      </div>
+      <div class="faq-a">
+        <p>No — this is an independent, unofficial fan project, built by a player for other players. It isn't endorsed by, sponsored by, or affiliated with Mantic Games, 343 Industries, or Microsoft.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+        Should I still consider the official Mantic app?
+        <span class="faq-q-mark">+</span>
+      </div>
+      <div class="faq-a">
+        <p>If you play in ranked events or care about Global Rankings, yes — that's a real feature this tool doesn't try to replicate. This is built specifically for casual players who don't need that and would rather not pay monthly for a list builder.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  Unofficial fan project &middot; Not affiliated with Mantic Games or 343 Industries &middot;
+  <a href="index.html">Overview</a> &middot; <a href="setup.html">Setup Guide</a>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

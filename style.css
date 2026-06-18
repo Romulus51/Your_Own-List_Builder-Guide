@@ -1,0 +1,319 @@
+/* ============================================================
+   Halo Flashpoint List Builder — Tutorial Site
+   Shared stylesheet across overview / setup / features / faq
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&family=Inter:wght@400;500;600&display=swap');
+
+:root{
+  --bg:        #080c10;
+  --bg2:       #0d1219;
+  --bg3:       #111820;
+  --panel:     #0e151c;
+  --border:    #1c2730;
+  --border2:   #2a3946;
+  --text:      #e8eef4;
+  --text2:     #9fb0c0;
+  --text3:     #5e7186;
+  --accent:    #00aaff;
+  --accent2:   #0066cc;
+  --caution:   #ffaa33;
+  --ok:        #00cc77;
+  --font-head: 'Rajdhani', sans-serif;
+  --font-mono: 'Share Tech Mono', monospace;
+  --font-body: 'Inter', sans-serif;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:var(--font-body); font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--accent); text-decoration:none;}
+a:hover{text-decoration:underline;}
+img{max-width:100%; display:block;}
+code{
+  font-family:var(--font-mono); background:var(--bg3); color:var(--accent);
+  padding:2px 6px; border-radius:3px; font-size:.9em;
+}
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+
+/* ── Background texture: faint scanline grid, ambient not decorative ── */
+body::before{
+  content:'';
+  position:fixed; inset:0; z-index:-1; pointer-events:none;
+  background-image:
+    linear-gradient(rgba(0,170,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,170,255,.025) 1px, transparent 1px);
+  background-size:48px 48px;
+}
+
+/* ── Top navigation ── */
+.site-header{
+  position:sticky; top:0; z-index:100;
+  background:rgba(8,12,16,.92); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border);
+}
+.site-header-inner{
+  max-width:1080px; margin:0 auto; padding:16px 24px;
+  display:flex; align-items:center; justify-content:space-between; gap:24px;
+}
+.site-logo{
+  font-family:var(--font-head); font-weight:700; font-size:18px;
+  letter-spacing:1.5px; color:var(--text); white-space:nowrap;
+}
+.site-logo span{color:var(--accent);}
+.site-nav{display:flex; gap:4px; flex-wrap:wrap;}
+.site-nav a{
+  font-family:var(--font-head); font-weight:600; font-size:14px;
+  letter-spacing:.5px; color:var(--text2); padding:8px 14px;
+  border-radius:3px; transition:all .15s;
+}
+.site-nav a:hover{color:var(--text); background:var(--bg3); text-decoration:none;}
+.site-nav a.active{color:var(--accent); background:rgba(0,170,255,.1);}
+.site-cta{
+  font-family:var(--font-head); font-weight:700; font-size:13px;
+  letter-spacing:1px; text-transform:uppercase;
+  background:var(--accent2); color:#fff; padding:9px 16px;
+  border-radius:3px; white-space:nowrap; transition:background .15s;
+}
+.site-cta:hover{background:var(--accent); text-decoration:none;}
+
+/* ── Mobile nav toggle ── */
+.nav-toggle{display:none;}
+
+/* ── Layout shell ── */
+.page{max-width:1080px; margin:0 auto; padding:0 24px;}
+.page-with-rail{
+  max-width:1080px; margin:0 auto; padding:48px 24px 96px;
+  display:grid; grid-template-columns:220px 1fr; gap:48px;
+}
+
+/* ── Hero ── */
+.hero{
+  padding:88px 24px 72px; text-align:center;
+  border-bottom:1px solid var(--border);
+  position:relative; overflow:hidden;
+}
+.hero-eyebrow{
+  font-family:var(--font-mono); font-size:12px; letter-spacing:3px;
+  color:var(--accent); text-transform:uppercase; margin-bottom:18px;
+}
+.hero h1{
+  font-family:var(--font-head); font-weight:700; font-size:52px;
+  letter-spacing:1px; line-height:1.1; margin:0 0 20px;
+  max-width:760px; margin-left:auto; margin-right:auto;
+}
+.hero h1 span{color:var(--accent);}
+.hero-sub{
+  font-size:18px; color:var(--text2); max-width:600px;
+  margin:0 auto 36px; line-height:1.65;
+}
+.hero-actions{display:flex; gap:14px; justify-content:center; flex-wrap:wrap;}
+.btn{
+  font-family:var(--font-head); font-weight:700; font-size:14px;
+  letter-spacing:1px; text-transform:uppercase; padding:14px 28px;
+  border-radius:3px; transition:all .15s; display:inline-block;
+  border:1px solid transparent;
+}
+.btn-primary{background:var(--accent2); color:#fff;}
+.btn-primary:hover{background:var(--accent); text-decoration:none;}
+.btn-ghost{background:transparent; color:var(--text); border-color:var(--border2);}
+.btn-ghost:hover{border-color:var(--accent); color:var(--accent); text-decoration:none;}
+
+/* ── Section scaffolding ── */
+.section{padding:72px 24px;}
+.section-tight{padding:48px 24px;}
+.section-label{
+  font-family:var(--font-mono); font-size:12px; letter-spacing:3px;
+  color:var(--accent); text-transform:uppercase; margin-bottom:14px;
+}
+.section h2{
+  font-family:var(--font-head); font-weight:700; font-size:32px;
+  letter-spacing:.5px; margin:0 0 16px;
+}
+.section-intro{color:var(--text2); font-size:16px; max-width:680px; margin-bottom:40px;}
+
+/* ── Cards ── */
+.card-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+.card{
+  background:var(--panel); border:1px solid var(--border);
+  border-radius:6px; padding:24px;
+}
+.card-icon{font-size:28px; margin-bottom:14px; display:block;}
+.card h3{
+  font-family:var(--font-head); font-weight:600; font-size:18px;
+  margin:0 0 8px; letter-spacing:.3px;
+}
+.card p{color:var(--text2); font-size:14px; margin:0; line-height:1.6;}
+
+/* ── Comparison table ── */
+.compare-table{
+  width:100%; border-collapse:collapse; margin:24px 0;
+  font-size:14px; background:var(--panel); border-radius:6px; overflow:hidden;
+}
+.compare-table th, .compare-table td{
+  padding:14px 18px; text-align:left; border-bottom:1px solid var(--border);
+}
+.compare-table th{
+  font-family:var(--font-head); font-weight:600; letter-spacing:.5px;
+  color:var(--text2); font-size:13px; text-transform:uppercase;
+  background:var(--bg3);
+}
+.compare-table td.yes{color:var(--ok);}
+.compare-table td.no{color:var(--text3);}
+.compare-table tr:last-child td{border-bottom:none;}
+.compare-table .row-highlight td{background:rgba(0,170,255,.06);}
+
+/* ── Step rail (Setup page) ── */
+.step-rail{position:sticky; top:96px; align-self:start;}
+.step-rail-title{
+  font-family:var(--font-mono); font-size:11px; letter-spacing:2px;
+  color:var(--text3); text-transform:uppercase; margin-bottom:16px;
+}
+.step-rail ol{list-style:none; margin:0; padding:0;}
+.step-rail li{margin-bottom:4px;}
+.step-rail a{
+  display:flex; align-items:center; gap:10px;
+  padding:9px 10px; border-radius:4px; font-size:13px;
+  color:var(--text2); border-left:2px solid transparent;
+}
+.step-rail a:hover{color:var(--text); text-decoration:none; background:var(--bg3);}
+.step-rail a.active{
+  color:var(--accent); border-left-color:var(--accent);
+  background:rgba(0,170,255,.07);
+}
+.step-rail-num{
+  font-family:var(--font-mono); font-size:11px; width:20px; flex-shrink:0;
+}
+
+/* ── Setup steps ── */
+.setup-steps{display:flex; flex-direction:column; gap:64px;}
+.setup-step{scroll-margin-top:96px;}
+.setup-step-head{display:flex; align-items:baseline; gap:14px; margin-bottom:6px;}
+.setup-step-num{
+  font-family:var(--font-head); font-weight:700; font-size:14px;
+  color:var(--accent); letter-spacing:1px;
+}
+.setup-step h2{
+  font-family:var(--font-head); font-weight:700; font-size:26px; margin:0;
+}
+.setup-step-required{
+  font-family:var(--font-mono); font-size:10px; letter-spacing:1.5px;
+  text-transform:uppercase; padding:3px 9px; border-radius:10px;
+  margin-left:auto;
+}
+.setup-step-required.req{background:rgba(255,107,26,.15); color:var(--caution);}
+.setup-step-required.opt{background:rgba(0,204,119,.15); color:var(--ok);}
+.setup-step-body{color:var(--text2); margin-bottom:24px;}
+.setup-step-body p{margin:0 0 14px;}
+.setup-step-body ul, .setup-step-body ol{padding-left:22px; margin:0 0 14px;}
+.setup-step-body li{margin-bottom:8px;}
+
+/* ── Screenshot / GIF placeholder ── */
+.shot{
+  background:var(--bg3); border:1.5px dashed var(--border2); border-radius:6px;
+  padding:32px 20px; text-align:center; margin:20px 0;
+}
+.shot-label{
+  font-family:var(--font-mono); font-size:12px; color:var(--caution);
+  letter-spacing:.5px; margin-bottom:6px;
+}
+.shot-desc{font-size:13px; color:var(--text3); max-width:480px; margin:0 auto;}
+.shot-type{
+  display:inline-block; font-family:var(--font-mono); font-size:10px;
+  letter-spacing:1px; text-transform:uppercase; color:var(--bg);
+  background:var(--caution); padding:2px 8px; border-radius:3px; margin-bottom:10px;
+}
+
+/* ── Callouts ── */
+.callout{
+  border-radius:6px; padding:16px 18px; margin:18px 0;
+  font-size:14px; line-height:1.6; border-left:3px solid;
+}
+.callout-tip{background:rgba(0,204,119,.07); border-color:var(--ok);}
+.callout-caution{background:rgba(255,170,51,.08); border-color:var(--caution);}
+.callout-title{
+  font-family:var(--font-head); font-weight:700; font-size:12px;
+  letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;
+}
+.callout-tip .callout-title{color:var(--ok);}
+.callout-caution .callout-title{color:var(--caution);}
+
+/* ── Code block ── */
+.codeblock{
+  background:#05080b; border:1px solid var(--border); border-radius:6px;
+  padding:16px 18px; font-family:var(--font-mono); font-size:13px;
+  color:var(--text2); overflow-x:auto; margin:16px 0; line-height:1.7;
+}
+.codeblock .k{color:var(--accent);}
+
+/* ── FAQ accordion ── */
+.faq-list{display:flex; flex-direction:column; gap:1px; background:var(--border); border-radius:6px; overflow:hidden;}
+.faq-item{background:var(--panel);}
+.faq-q{
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  padding:18px 22px; cursor:pointer; font-family:var(--font-head);
+  font-weight:600; font-size:16px; user-select:none;
+}
+.faq-q:hover{background:var(--bg3);}
+.faq-q-mark{font-size:18px; color:var(--accent); flex-shrink:0; transition:transform .2s;}
+.faq-item.open .faq-q-mark{transform:rotate(45deg);}
+.faq-a{
+  max-height:0; overflow:hidden; transition:max-height .25s ease, padding .25s ease;
+  font-size:14px; color:var(--text2); padding:0 22px;
+}
+.faq-item.open .faq-a{max-height:600px; padding:0 22px 20px;}
+.faq-a p{margin:0 0 10px;}
+.faq-a p:last-child{margin-bottom:0;}
+
+/* ── Feature detail blocks ── */
+.feature-block{
+  display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;
+  padding:56px 0; border-bottom:1px solid var(--border);
+}
+.feature-block:last-child{border-bottom:none;}
+.feature-block.reverse{direction:rtl;}
+.feature-block.reverse > *{direction:ltr;}
+.feature-eyebrow{
+  font-family:var(--font-mono); font-size:11px; letter-spacing:2px;
+  color:var(--accent); text-transform:uppercase; margin-bottom:10px;
+}
+.feature-block h3{
+  font-family:var(--font-head); font-weight:700; font-size:24px; margin:0 0 12px;
+}
+.feature-block p{color:var(--text2); margin:0 0 14px;}
+.feature-block ul{padding-left:20px; color:var(--text2); margin:0;}
+.feature-block li{margin-bottom:6px;}
+
+/* ── Footer ── */
+.site-footer{
+  border-top:1px solid var(--border); padding:40px 24px;
+  text-align:center; color:var(--text3); font-size:13px;
+}
+.site-footer a{color:var(--text2);}
+
+/* ── Responsive ── */
+@media (max-width: 880px){
+  .hero h1{font-size:36px;}
+  .hero-sub{font-size:16px;}
+  .card-grid{grid-template-columns:1fr;}
+  .feature-block, .feature-block.reverse{grid-template-columns:1fr; direction:ltr;}
+  .page-with-rail{grid-template-columns:1fr; padding-top:24px;}
+  .step-rail{position:static; margin-bottom:32px;}
+  .step-rail ol{display:flex; flex-wrap:wrap; gap:6px;}
+  .step-rail li{margin-bottom:0;}
+  .site-nav{display:none;}
+  .site-nav.open{
+    display:flex; flex-direction:column; position:fixed; top:64px; left:0; right:0;
+    background:var(--bg); padding:12px; border-bottom:1px solid var(--border); gap:2px;
+  }
+  .nav-toggle{
+    display:block; background:none; border:1px solid var(--border2); color:var(--text);
+    width:38px; height:38px; border-radius:4px; font-size:16px; cursor:pointer;
+  }
+  .compare-table{font-size:13px;}
+  .compare-table th, .compare-table td{padding:10px 12px;}
+}

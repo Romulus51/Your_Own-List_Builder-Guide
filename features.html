@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Features — Halo Flashpoint List Builder</title>
+<meta name="description" content="A full tour of what the app can do: list building, custom competitive rules, roster history, comparison, offline support, and PDF export."/>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-logo">FLASHPOINT <span>LIST BUILDER</span></div>
+    <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation">&#9776;</button>
+    <nav class="site-nav">
+      <a href="index.html">Overview</a>
+      <a href="setup.html">Setup Guide</a>
+      <a href="features.html" class="active">Features</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+    <a href="#" class="site-cta">Get the App &rarr;</a>
+  </div>
+</header>
+
+<section class="hero" style="padding:64px 24px 48px;">
+  <div class="hero-eyebrow">FEATURES</div>
+  <h1 style="font-size:42px;">Everything it does, in one place</h1>
+  <p class="hero-sub">A full list builder with a few things even the official app doesn't have.</p>
+</section>
+
+<div class="page" style="padding-bottom:80px;">
+
+  <div class="feature-block">
+    <div>
+      <div class="feature-eyebrow">Core Building</div>
+      <h3>Build lists the way the cards actually work</h3>
+      <p>Browse every Character, Weapon, Armoury item, and Special Order from your Sheet, with full stat cards, keyword definitions on hover, and live points tracking as you build.</p>
+      <ul>
+        <li>Full card view or compact unit-photo mode, switchable per item or globally</li>
+        <li>Live points bar with your chosen limit</li>
+        <li>Keyword badges that show their full rules text on hover — no flipping between a rulebook and the app</li>
+      </ul>
+    </div>
+    <div class="shot">
+      <span class="shot-type">Screenshot</span>
+      <div class="shot-label">[ Browse panel with an open character card and a keyword hover tooltip visible ]</div>
+      <div class="shot-desc">Hover over a keyword badge so its definition tooltip is captured in the screenshot.</div>
+    </div>
+  </div>
+
+  <div class="feature-block reverse">
+    <div>
+      <div class="feature-eyebrow">Competitive Rules</div>
+      <h3>Standard, Big Team Battle — or your own custom ruleset</h3>
+      <p>Toggle Competitive Mode to get automatic faction locking, detachment validation, and point-limit enforcement. Choose Standard (200pts) or Big Team Battle (450pts) — or build a fully custom ruleset.</p>
+      <ul>
+        <li>Set your own points limit, Legend max, Special Orders min/max, and weapon/item/grenade caps per character and per roster</li>
+        <li>Export your custom ruleset as a file, or share it as a link with your playgroup</li>
+        <li>A live validity check tells you exactly what's wrong, if anything, before you head to the table</li>
+      </ul>
+    </div>
+    <div class="shot">
+      <span class="shot-type">GIF</span>
+      <div class="shot-label">[ Competitive Mode modal — selecting Custom and adjusting a rule value ]</div>
+      <div class="shot-desc">Short GIF: open Competitive Mode, click Custom, type a different value into one of the rule fields (e.g. change weapons-per-character from 1 to 2), and show the panel update.</div>
+    </div>
+  </div>
+
+  <div class="feature-block">
+    <div>
+      <div class="feature-eyebrow">Roster History</div>
+      <h3>Never lose a list by accident</h3>
+      <p>Before loading a different roster, importing a file, or clearing your list, the app automatically snapshots what you had — so an accidental overwrite is always recoverable.</p>
+      <ul>
+        <li>Up to 15 automatic snapshots, each timestamped with what triggered it</li>
+        <li>One-click restore, which is itself reversible</li>
+      </ul>
+    </div>
+    <div class="shot">
+      <span class="shot-type">Screenshot</span>
+      <div class="shot-label">[ Roster History modal with a few snapshot entries listed ]</div>
+      <div class="shot-desc">The History modal showing 2-3 snapshot entries with their timestamps and item counts, and a visible Restore button.</div>
+    </div>
+  </div>
+
+  <div class="feature-block reverse">
+    <div>
+      <div class="feature-eyebrow">Roster Comparison</div>
+      <h3>See exactly what changed between two lists</h3>
+      <p>Load two rosters side by side — from a saved cloud roster or a JSON file on either side — and get a real diff: units added, removed, or with a changed loadout, plus the points difference.</p>
+    </div>
+    <div class="shot">
+      <span class="shot-type">Screenshot</span>
+      <div class="shot-label">[ Compare Rosters results view showing added/removed/changed groups ]</div>
+      <div class="shot-desc">The comparison results screen with at least one item in each of the Added, Removed, and Changed groups, and the points delta row visible at the top.</div>
+    </div>
+  </div>
+
+  <div class="feature-block">
+    <div>
+      <div class="feature-eyebrow">Works Anywhere</div>
+      <h3>Offline support and a sheet health check</h3>
+      <p>Install it as an app on your phone or desktop, and it keeps working with no signal — handy at a venue with bad wifi. And a built-in Health Check scans your Sheet for the most common setup mistakes before they become a problem mid-game.</p>
+    </div>
+    <div class="shot">
+      <span class="shot-type">Screenshot</span>
+      <div class="shot-label">[ The app installed as a PWA, shown in a phone's home screen / app switcher ]</div>
+      <div class="shot-desc">A phone home screen or recent-apps view showing the Flashpoint List Builder icon installed like a native app.</div>
+    </div>
+  </div>
+
+  <div class="feature-block reverse">
+    <div>
+      <div class="feature-eyebrow">At the Table</div>
+      <h3>Clean printouts and PDF export</h3>
+      <p>Export your roster as a polished PDF with full card art, or a fast black-and-white printout for the table. Optionally append a keyword glossary so you never need a separate rules reference.</p>
+    </div>
+    <div class="shot">
+      <span class="shot-type">Screenshot</span>
+      <div class="shot-label">[ A page of the exported PDF roster ]</div>
+      <div class="shot-desc">One page of the Full PDF export, showing a couple of character cards laid out cleanly.</div>
+    </div>
+  </div>
+
+</div>
+
+<section class="section section-tight" style="background:var(--bg2); border-top:1px solid var(--border); text-align:center;">
+  <h2 style="margin-bottom:10px;">Convinced?</h2>
+  <p class="section-intro" style="margin-left:auto; margin-right:auto;">The setup guide is free to read end to end before you buy anything.</p>
+  <div class="hero-actions">
+    <a href="setup.html" class="btn btn-primary">Read the Setup Guide</a>
+    <a href="#" class="btn btn-ghost">Get the App on Itch.io</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  Unofficial fan project &middot; Not affiliated with Mantic Games or 343 Industries &middot;
+  <a href="index.html">Overview</a> &middot; <a href="faq.html">FAQ</a>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

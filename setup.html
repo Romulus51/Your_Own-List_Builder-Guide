@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Setup Guide — Halo Flashpoint List Builder</title>
+<meta name="description" content="Step-by-step setup guide: copy the Sheet, deploy Apps Script, host the app, and optionally connect Supabase for cloud saves."/>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-logo">FLASHPOINT <span>LIST BUILDER</span></div>
+    <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation">&#9776;</button>
+    <nav class="site-nav">
+      <a href="index.html">Overview</a>
+      <a href="setup.html" class="active">Setup Guide</a>
+      <a href="features.html">Features</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+    <a href="#" class="site-cta">Get the App &rarr;</a>
+  </div>
+</header>
+
+<section class="hero" style="padding:56px 24px 40px;">
+  <div class="hero-eyebrow">SETUP GUIDE</div>
+  <h1 style="font-size:38px;">About 15–20 minutes, done once</h1>
+  <p class="hero-sub" style="margin-bottom:0;">
+    Everything below is free to follow, including the Google Sheet template. You only need a paid file (the app itself) at the very last step.
+  </p>
+</section>
+
+<div class="page-with-rail">
+
+  <nav class="step-rail">
+    <div class="step-rail-title">On This Page</div>
+    <ol>
+      <li><a href="#step-1"><span class="step-rail-num">01</span> Copy the Sheet</a></li>
+      <li><a href="#step-2"><span class="step-rail-num">02</span> Deploy Apps Script</a></li>
+      <li><a href="#step-3"><span class="step-rail-num">03</span> Get the App File</a></li>
+      <li><a href="#step-4"><span class="step-rail-num">04</span> Host It (GitHub Pages)</a></li>
+      <li><a href="#step-5"><span class="step-rail-num">05</span> First-Run Wizard</a></li>
+      <li><a href="#step-6"><span class="step-rail-num">06</span> Supabase (optional)</a></li>
+      <li><a href="#step-7"><span class="step-rail-num">07</span> Health Check</a></li>
+    </ol>
+  </nav>
+
+  <div class="setup-steps">
+
+    <!-- STEP 1 -->
+    <div class="setup-step" id="step-1">
+      <div class="setup-step-head">
+        <span class="setup-step-num">STEP 01</span>
+        <h2>Copy the Google Sheet template</h2>
+        <span class="setup-step-required req">Required</span>
+      </div>
+      <div class="setup-step-body">
+        <p>This Sheet is your card database — every Character, Weapon, Armoury item, Special Order, and Keyword definition the app reads lives here. It's free, and making your own copy means you fully own and control it.</p>
+        <ol>
+          <li>Open the template using the link below.</li>
+          <li>Go to <strong>File &rarr; Make a copy</strong>, and save it to your own Google Drive.</li>
+          <li>Rename it to whatever you like — the name doesn't matter to the app.</li>
+        </ol>
+        <div class="hero-actions" style="justify-content:flex-start;">
+          <a href="#" class="btn btn-primary">Open the Free Sheet Template</a>
+        </div>
+      </div>
+      <div class="shot">
+        <span class="shot-type">Screenshot</span>
+        <div class="shot-label">[ Google Sheet template, File &rarr; Make a copy menu open ]</div>
+        <div class="shot-desc">Show the template Sheet with its tabs visible along the bottom (Characters, Armoury, Special Orders, Keywords), and the File menu open with "Make a copy" highlighted.</div>
+      </div>
+      <div class="callout callout-tip">
+        <div class="callout-title">Tip</div>
+        Take a moment to look at the tabs along the bottom — Characters, Armoury, Special Orders, Keywords. You'll be editing this Sheet directly any time you want to add or update cards, so it's worth knowing your way around it.
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="setup-step" id="step-2">
+      <div class="setup-step-head">
+        <span class="setup-step-num">STEP 02</span>
+        <h2>Deploy the Apps Script</h2>
+        <span class="setup-step-required req">Required</span>
+      </div>
+      <div class="setup-step-body">
+        <p>Apps Script is a small, free Google service that lets the app read your Sheet over the internet. You'll paste in a short piece of code, then deploy it as a private web app under your own Google account.</p>
+        <ol>
+          <li>In your copied Sheet, go to <strong>Extensions &rarr; Apps Script</strong>.</li>
+          <li>Delete any starter code in the editor, and paste in the script provided in your purchase files (<code>Code.gs</code>).</li>
+          <li>Click <strong>Deploy &rarr; New deployment</strong>.</li>
+          <li>For "Select type," choose <strong>Web app</strong>.</li>
+          <li>Set <strong>Execute as</strong> to "Me," and <strong>Who has access</strong> to "Anyone." (This doesn't expose your Sheet data publicly in a meaningful way — it just allows your own app to fetch it. See the FAQ for details.)</li>
+          <li>Click <strong>Deploy</strong>, and authorize the script when Google prompts you.</li>
+          <li>Copy the <strong>Web app URL</strong> it gives you — it'll end in <code>/exec</code>. You'll need this in Step 5.</li>
+        </ol>
+      </div>
+      <div class="shot">
+        <span class="shot-type">Screenshot</span>
+        <div class="shot-label">[ Apps Script editor with Code.gs pasted in ]</div>
+        <div class="shot-desc">The Apps Script code editor showing the pasted script, with the Deploy button visible in the top right.</div>
+      </div>
+      <div class="shot">
+        <span class="shot-type">Screenshot</span>
+        <div class="shot-label">[ New deployment dialog — Web app type selected ]</div>
+        <div class="shot-desc">The "New deployment" modal with type set to Web app, Execute as "Me," and Who has access set to "Anyone." Circle or highlight these three settings specifically since they're the most common mistake point.</div>
+      </div>
+      <div class="shot">
+        <span class="shot-type">Screenshot</span>
+        <div class="shot-label">[ Deployment success screen showing the Web app URL ]</div>
+        <div class="shot-desc">The confirmation screen after deploying, with the Web app URL field visible (blur out your actual personal URL when capturing, or use a placeholder, since this guide is public).</div>
+      </div>
+      <div class="callout callout-caution">
+        <div class="callout-title">Most common mistake here</div>
+        If "Who has access" isn't set to <strong>Anyone</strong>, the app will fail to connect later with a confusing error. Double-check this setting before moving on.
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="setup-step" id="step-3">
+      <div class="setup-step-head">
+        <span class="setup-step-num">STEP 03</span>
+        <h2>Get the app file</h2>
+        <span class="setup-step-required req">Required &middot; Paid</span>
+      </div>
+      <div class="setup-step-body">
+        <p>This is the one paid step. Purchasing gets you a single <code>index.html</code> file — the entire app, ready to host. Everything before and after this step is free.</p>
+        <div class="hero-actions" style="justify-content:flex-start;">
+          <a href="#" class="btn btn-primary">Get the App on Itch.io</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="setup-step" id="step-4">
+      <div class="setup-step-head">
+        <span class="setup-step-num">STEP 04</span>
+        <h2>Host it on GitHub Pages</h2>
+        <span class="setup-step-required req">Required</span>
+      </div>
+      <div class="setup-step-body">
+        <p>GitHub Pages hosts static sites for free, with no traffic limits that matter at this scale. This makes your copy of the app reachable at a URL you can open from any device.</p>
+        <ol>
+          <li>Create a free account at <a href="https://github.com" target="_blank">github.com</a> if you don't have one.</li>
+          <li>Click the <strong>+</strong> in the top right &rarr; <strong>New repository</strong>. Name it anything (e.g. <code>my-flashpoint-list</code>), and set it to <strong>Public</strong>.</li>
+          <li>Once created, click <strong>Add file &rarr; Upload files</strong>, and upload the <code>index.html</code> file from Step 3.</li>
+          <li>Go to the repository's <strong>Settings &rarr; Pages</strong>.</li>
+          <li>Under "Source," select <strong>Deploy from a branch</strong>, choose the <code>main</code> branch and <code>/ (root)</code> folder, then click <strong>Save</strong>.</li>
+          <li>Wait a minute or two, then refresh — GitHub will show your live URL at the top of that page (something like <code>https://yourname.github.io/my-flashpoint-list/</code>).</li>
+        </ol>
+      </div>
+      <div class="shot">
+        <span class="shot-type">Screenshot</span>
+        <div class="shot-label">[ GitHub: New repository creation screen ]</div>
+        <div class="shot-desc">The "Create a new repository" page with a repo name typed in and Public selected.</div>
+      </div>
+      <div class="shot">
+        <span class="shot-type">Screenshot</span>
+        <div class="shot-label">[ GitHub: Upload files screen with index.html added ]</div>
+        <div class="shot-desc">The drag-and-drop upload screen showing index.html added and ready to commit.</div>
+      </div>
+      <div class="shot">
+        <span class="shot-type">Screenshot</span>
+        <div class="shot-label">[ GitHub Pages settings, showing the live URL after enabling ]</div>
+        <div class="shot-desc">Settings &rarr; Pages screen with the branch/folder selected and the green "Your site is live at..." confirmation box visible.</div>
+      </div>
+      <div class="callout callout-tip">
+        <div class="callout-title">Alternative: Cloudflare Pages</div>
+        Cloudflare Pages works just as well and is also free — if you'd rather use that instead of GitHub Pages, the steps are similar: create an account, create a new Pages project, and upload the same <code>index.html</code> file.
+      </div>
+    </div>
+
+    <!-- STEP 5 -->
+    <div class="setup-step" id="step-5">
+      <div class="setup-step-head">
+        <span class="setup-step-num">STEP 05</span>
+        <h2>First-run setup wizard</h2>
+        <span class="setup-step-required req">Required</span>
+      </div>
+      <div class="setup-step-body">
+        <p>Open your new live URL from Step 4. Since this is a fresh copy, the app will show a setup screen instead of jumping straight in.</p>
+        <ol>
+          <li>Paste the Apps Script Web app URL you copied in Step 2 into the first field.</li>
+          <li>Click <strong>Test Connection</strong>. You should see a confirmation showing how many rows it found in your Sheet.</li>
+          <li>Click <strong>Save &amp; Continue</strong>.</li>
+        </ol>
+        <p>That's it — the app is now fully connected to your Sheet. Anything you add or edit in the Sheet will appear in the app after a refresh.</p>
+      </div>
+      <div class="shot">
+        <span class="shot-type">Screenshot</span>
+        <div class="shot-label">[ First-run Setup Wizard, Step 1 field with a successful test result ]</div>
+        <div class="shot-desc">The in-app wizard screen with the Apps Script URL pasted in and the green "Connected — found X rows" message showing under the Test Connection button.</div>
+      </div>
+    </div>
+
+    <!-- STEP 6 -->
+    <div class="setup-step" id="step-6">
+      <div class="setup-step-head">
+        <span class="setup-step-num">STEP 06</span>
+        <h2>Connect Supabase for cloud saves</h2>
+        <span class="setup-step-required opt">Optional</span>
+      </div>
+      <div class="setup-step-body">
+        <p>This step lets you save rosters to the cloud and load them on any device. If you skip it, you can still save and load rosters locally as JSON files — that always works with zero setup.</p>
+        <ol>
+          <li>Create a free account at <a href="https://supabase.com" target="_blank">supabase.com</a>.</li>
+          <li>Create a new project (pick any name and a database password — store the password somewhere safe, you won't need it for this setup but Supabase requires it).</li>
+          <li>Once the project is ready, go to the <strong>SQL Editor</strong> and run the table-creation script provided in your purchase files (<code>supabase-setup.sql</code>) to create the <code>rosters</code> table.</li>
+          <li>Go to <strong>Project Settings &rarr; API</strong>. Copy the <strong>Project URL</strong> and the <strong>anon public</strong> key.</li>
+          <li>Back in the app, open <strong>Settings &rarr; Edit Connections</strong>, paste both values into the Supabase fields, and click <strong>Test Connection</strong>.</li>
+        </ol>
+      </div>
+      <div class="shot">
+        <span class="shot-type">Screenshot</span>
+        <div class="shot-label">[ Supabase: new project creation screen ]</div>
+        <div class="shot-desc">The Supabase dashboard's new project form.</div>
+      </div>
+      <div class="shot">
+        <span class="shot-type">Screenshot</span>
+        <div class="shot-label">[ Supabase SQL Editor with the setup script pasted and run successfully ]</div>
+        <div class="shot-desc">The SQL Editor with the table-creation script and the green "Success" confirmation after running it.</div>
+      </div>
+      <div class="shot">
+        <span class="shot-type">Screenshot</span>
+        <div class="shot-label">[ Supabase Project Settings &rarr; API page, URL and anon key visible ]</div>
+        <div class="shot-desc">The API settings page. Blur or placeholder the actual key values since this guide is public.</div>
+      </div>
+    </div>
+
+    <!-- STEP 7 -->
+    <div class="setup-step" id="step-7">
+      <div class="setup-step-head">
+        <span class="setup-step-num">STEP 07</span>
+        <h2>Run a Health Check</h2>
+        <span class="setup-step-required opt">Recommended</span>
+      </div>
+      <div class="setup-step-body">
+        <p>Before you start building lists, open <strong>Settings &rarr; Run Health Check</strong>. It scans your Sheet data for the most common setup mistakes — missing fields, duplicate names, keywords with broken links — and tells you exactly what to fix, if anything.</p>
+        <p>A clean Health Check result means your Sheet is properly structured and you're ready to build your first roster.</p>
+      </div>
+      <div class="shot">
+        <span class="shot-type">Screenshot</span>
+        <div class="shot-label">[ Health Check modal showing a clean "All clear" result ]</div>
+        <div class="shot-desc">The Health Check results screen with 0 errors, 0 warnings, and the green all-clear message.</div>
+      </div>
+      <div class="callout callout-tip">
+        <div class="callout-title">You're done</div>
+        From here, head to the <a href="features.html">Features</a> page for a tour of what the app can do, or just start building your first list.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer class="site-footer">
+  Unofficial fan project &middot; Not affiliated with Mantic Games or 343 Industries &middot;
+  <a href="index.html">Overview</a> &middot; <a href="faq.html">FAQ</a>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
