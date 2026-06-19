@@ -9,7 +9,7 @@ what order to use it in.
 START HERE — the full setup guide, with a screenshot for every
 step, lives here:
 
-    [your tutorial site link here]/setup.html
+    https://romulus51.github.io/Halo_Flashpoint-List_Builder-Guide/setup.html
 
 This file is just a quick orientation in case you're looking at
 these files before reading that guide. The guide is the real
@@ -77,7 +77,7 @@ Every one of these steps has its own screenshots in the full
 guide. None of this needs to be figured out from scratch —
 just follow along:
 
-    [your tutorial site link here]/setup.html
+    https://romulus51.github.io/Halo_Flashpoint-List_Builder-Guide/setup.html
 
 
 ------------------------------------------------------------
@@ -118,7 +118,7 @@ Check the FAQ first — it covers most setup questions directly,
 including the "Who has access: Anyone" Apps Script setting
 that trips people up the most:
 
-    [your tutorial site link here]/faq.html
+    https://romulus51.github.io/Halo_Flashpoint-List_Builder-Guide/faq.html
 
 ------------------------------------------------------------
 
