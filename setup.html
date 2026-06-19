@@ -39,7 +39,7 @@
       <li><a href="#step-1"><span class="step-rail-num">01</span> Copy the Sheet</a></li>
       <li><a href="#step-2"><span class="step-rail-num">02</span> Deploy Apps Script</a></li>
       <li><a href="#step-3"><span class="step-rail-num">03</span> Get the App File</a></li>
-      <li><a href="#step-4"><span class="step-rail-num">04</span> Host It (GitHub Pages)</a></li>
+      <li><a href="#step-4"><span class="step-rail-num">04</span> Host It (GitHub + Cloudflare)</a></li>
       <li><a href="#step-5"><span class="step-rail-num">05</span> First-Run Wizard</a></li>
       <li><a href="#step-6"><span class="step-rail-num">06</span> Supabase (optional)</a></li>
       <li><a href="#step-7"><span class="step-rail-num">07</span> Health Check</a></li>
@@ -136,38 +136,48 @@
     <div class="setup-step" id="step-4">
       <div class="setup-step-head">
         <span class="setup-step-num">STEP 04</span>
-        <h2>Host it on GitHub Pages</h2>
+        <h2>Host it with GitHub + Cloudflare</h2>
         <span class="setup-step-required req">Required</span>
       </div>
       <div class="setup-step-body">
-        <p>GitHub Pages hosts static sites for free, with no traffic limits that matter at this scale. This makes your copy of the app reachable at a URL you can open from any device.</p>
+        <p>GitHub stores your copy of the app's code; Cloudflare is what actually serves it as a live website. Both are free at this scale, and connecting them takes a couple of minutes once your files are uploaded.</p>
         <ol>
           <li>Create a free account at <a href="https://github.com" target="_blank">github.com</a> if you don't have one.</li>
-          <li>Click the <strong>+</strong> in the top right &rarr; <strong>New repository</strong>. Name it anything (e.g. <code>my-flashpoint-list</code>), and set it to <strong>Public</strong>.</li>
-          <li>Once created, click <strong>Add file &rarr; Upload files</strong>, and upload the <code>index.html</code> file from Step 3.</li>
-          <li>Go to the repository's <strong>Settings &rarr; Pages</strong>.</li>
-          <li>Under "Source," select <strong>Deploy from a branch</strong>, choose the <code>main</code> branch and <code>/ (root)</code> folder, then click <strong>Save</strong>.</li>
-          <li>Wait a minute or two, then refresh — GitHub will show your live URL at the top of that page (something like <code>https://yourname.github.io/my-flashpoint-list/</code>).</li>
+          <li>Click the <strong>+</strong> in the top right &rarr; <strong>New repository</strong>. Name it anything (e.g. <code>my-flashpoint-list</code>), and set it to <strong>Private</strong> &mdash; see the callout below for why.</li>
+          <li>Once created, click <strong>Add file &rarr; Upload files</strong>, and upload <strong>all three files</strong> from your purchase: <code>index.html</code>, <code>sw.js</code>, and <code>manifest.webmanifest</code>. All three need to sit in the same folder for the home screen install to work correctly — see the second callout below.</li>
+          <li>Create a free account at <a href="https://www.cloudflare.com" target="_blank">cloudflare.com</a> if you don't have one, then from the dashboard choose <strong>Workers &amp; Pages &rarr; Create &rarr; Connect to Git</strong>.</li>
+          <li>Authorize Cloudflare to access your GitHub account, then select the repository you just created.</li>
+          <li>Leave the build settings as their defaults (no build command, no framework needed — these are already-finished static files) and click <strong>Save and Deploy</strong>.</li>
+          <li>After a minute or two, Cloudflare will show your live URL. Open it once to confirm the app loads, then run through the setup wizard below.</li>
         </ol>
+      </div>
+      <div class="callout callout-caution">
+        <div class="callout-title">Why private, not public</div>
+        Keep the repository <strong>Private</strong> rather than Public. This app reads card data from your own Google Sheet, but that data — names, stats, rules text — comes from Mantic's published game. A private repo just keeps that content from being openly re-published in a browsable form on GitHub, which is good practice any time you're building a personal tool on top of someone else's game content, regardless of the platform. Cloudflare can deploy from a private repo exactly the same way as a public one, so this doesn't cost you anything in setup.
+      </div>
+      <div class="callout callout-caution">
+        <div class="callout-title">Three files, not one</div>
+        <code>sw.js</code> and <code>manifest.webmanifest</code> need to be uploaded alongside <code>index.html</code>, in the exact same folder. The app works fine online without them, but without these two, "Add to Home Screen" won't show the correct app name or icon, and the app won't open full-screen.
       </div>
       <div class="shot">
         <span class="shot-type">Screenshot</span>
         <div class="shot-label">[ GitHub: New repository creation screen ]</div>
-        <div class="shot-desc">The "Create a new repository" page with a repo name typed in and Public selected.</div>
+        <div class="shot-desc">The "Create a new repository" page with a repo name typed in and Private selected.</div>
       </div>
       <div class="shot">
         <span class="shot-type">Screenshot</span>
-        <div class="shot-label">[ GitHub: Upload files screen with index.html added ]</div>
-        <div class="shot-desc">The drag-and-drop upload screen showing index.html added and ready to commit.</div>
+        <div class="shot-label">[ GitHub: Upload files screen with all three files added ]</div>
+        <div class="shot-desc">The drag-and-drop upload screen showing index.html, sw.js, and manifest.webmanifest added and ready to commit.</div>
       </div>
       <div class="shot">
         <span class="shot-type">Screenshot</span>
-        <div class="shot-label">[ GitHub Pages settings, showing the live URL after enabling ]</div>
-        <div class="shot-desc">Settings &rarr; Pages screen with the branch/folder selected and the green "Your site is live at..." confirmation box visible.</div>
+        <div class="shot-label">[ Cloudflare: Connect to Git repository selection screen ]</div>
+        <div class="shot-desc">The Cloudflare Workers &amp; Pages screen showing the GitHub repository selected and ready to deploy.</div>
       </div>
-      <div class="callout callout-tip">
-        <div class="callout-title">Alternative: Cloudflare Pages</div>
-        Cloudflare Pages works just as well and is also free — if you'd rather use that instead of GitHub Pages, the steps are similar: create an account, create a new Pages project, and upload the same <code>index.html</code> file.
+      <div class="shot">
+        <span class="shot-type">Screenshot</span>
+        <div class="shot-label">[ Cloudflare: deployment success screen with the live URL ]</div>
+        <div class="shot-desc">The "Success! Your site is live" confirmation with the generated URL visible.</div>
       </div>
     </div>
 

@@ -147,7 +147,7 @@
         <span class="faq-q-mark">+</span>
       </div>
       <div class="faq-a">
-        <p>No. It's a one-time purchase. There's no recurring charge, ever, for any part of this setup — Google Sheets, Apps Script, GitHub Pages, and the free tier of Supabase all stay free for personal use at this scale.</p>
+        <p>No. It's a one-time purchase. There's no recurring charge, ever, for any part of this setup — Google Sheets, Apps Script, GitHub, Cloudflare, and the free tier of Supabase all stay free for personal use at this scale.</p>
       </div>
     </div>
 
@@ -177,11 +177,21 @@
 
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+        Does it actually work offline?
+        <span class="faq-q-mark">+</span>
+      </div>
+      <div class="faq-a">
+        <p>Sort of — and it's worth knowing exactly what that means. Load the app once while you have signal, and it'll keep working for the rest of that session even if you lose connection: browsing, building, the works. The catch is it only lasts for that session — closing the app or reloading the page while offline means you'll need signal again to reopen it, since the card database isn't saved to your device by default. There's a Settings option to preload every card image in advance too, so browsing doesn't depend on each image loading on demand. Think of it as "resilient to a dropped connection mid-session," not "fully usable with no signal from a cold start."</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this.parentElement)">
         Should I still consider the official Mantic app?
         <span class="faq-q-mark">+</span>
       </div>
       <div class="faq-a">
-        <p>If you play in ranked events or care about Global Rankings, yes — that's a real feature this tool doesn't try to replicate. This is built specifically for casual players who don't need that and would rather not pay monthly for a list builder.</p>
+        <p>If you play in ranked events or care about Global Rankings, yes — those aren't included on our side, and Mantic's official app ($2.99/mo) is the real way to get them. Worth knowing: Mantic's free tier already covers full rules and one list at no cost, so it's worth checking whether you actually need the paid tier before assuming you do. This tool is built for casual players who want a great list builder without an ongoing bill.</p>
       </div>
     </div>
   </div>
