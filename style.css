@@ -336,14 +336,30 @@ body::before{
      text never wraps), which on a narrow screen pushed the whole flex row
      (logo + hamburger + CTA button) wider than the viewport — flex
      children default to min-width:auto, so they refuse to shrink below
-     their content's natural width unless told to. Nothing visibly looked
-     wrong (no element rendered outside its box), but the row's total
-     width exceeded 100vw, which is exactly what produced page-wide
-     horizontal scrolling with nothing extra visibly in view. Shrinking
-     the logo at this breakpoint, plus min-width:0 + overflow-x:hidden as
-     a defensive backstop, fixes this and guards against it recurring if
-     header content changes later. */
+     their content's natural width unless told to. Shrinking the logo at
+     this breakpoint, plus min-width:0 as a defensive backstop, addresses
+     the logo's contribution to this. */
   .site-logo{font-size:14px;}
   .site-header-inner{min-width:0;}
-  .site-header{overflow-x:hidden;}
+
+  /* Mobile header overflow fix, part 2: the CTA button ("Get the App")
+     had the EXACT SAME white-space:nowrap problem as the logo above, just
+     smaller — and it was the remaining piece after the logo fix, which is
+     why the button specifically was still "slightly" cut off rather than
+     the whole row scrolling. An earlier attempt papered over this with
+     overflow-x:hidden on .site-header, which stops the PAGE from
+     scrolling sideways, but does so by silently CLIPPING whatever still
+     doesn't fit — that's exactly what "slightly disappears behind the
+     edge" was: the row was still wider than the viewport, just invisibly
+     cut off instead of visibly scrollable, which is worse since it's not
+     obvious anything is even wrong. Removing white-space:nowrap (so the
+     button can wrap to two lines if it must) and shrinking its
+     padding/font fixes the actual width this time, not just its
+     visibility — overflow-x:hidden is intentionally NOT used here
+     anymore, so any future overflow will be visibly obvious again rather
+     than silently clipped and easy to miss. */
+  .site-cta{
+    font-size:11px; padding:8px 12px; white-space:normal; text-align:center;
+  }
+  .site-header-inner{gap:10px; padding:14px 16px;}
 }
