@@ -27,19 +27,48 @@
   <div class="hero-eyebrow">SETUP GUIDE</div>
   <h1 style="font-size:38px;">About 15–20 minutes, done once</h1>
   <p class="hero-sub" style="margin-bottom:0;">
-    Everything below is free to follow, including the Google Sheet template. You only need a paid file (the app itself) at the very last step.
+    Everything below is free to follow, including the Google Sheet template. You only need a paid file at Step 3 — the very last technical step before the app runs.
   </p>
 </section>
 
-<div class="page-with-rail">
+<!-- Pre-flight checklist -->
+<div class="page" style="padding-top:40px; padding-bottom:0; max-width:820px;">
+  <div class="section-label">Before You Start</div>
+  <h2 style="font-family:var(--font-head); font-size:22px; margin:0 0 14px;">What you'll need</h2>
+  <p style="color:var(--text2); margin-bottom:20px; font-size:15px;">Three free accounts, nothing else. You may already have most of these.</p>
+  <div class="card-grid" style="grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:16px;">
+    <div class="card" style="padding:18px;">
+      <span class="card-icon" style="font-size:22px; margin-bottom:10px;">📧</span>
+      <h3 style="font-size:15px; margin-bottom:6px;">Google Account</h3>
+      <p style="font-size:13px;">For Google Sheets and Apps Script. You almost certainly have one already.</p>
+    </div>
+    <div class="card" style="padding:18px;">
+      <span class="card-icon" style="font-size:22px; margin-bottom:10px;">🐙</span>
+      <h3 style="font-size:15px; margin-bottom:6px;">GitHub Account</h3>
+      <p style="font-size:13px;">Free at <a href="https://github.com" target="_blank">github.com</a>. Used to store the app files.</p>
+    </div>
+    <div class="card" style="padding:18px;">
+      <span class="card-icon" style="font-size:22px; margin-bottom:10px;">☁️</span>
+      <h3 style="font-size:15px; margin-bottom:6px;">Cloudflare Account</h3>
+      <p style="font-size:13px;">Free at <a href="https://cloudflare.com" target="_blank">cloudflare.com</a>. Turns your GitHub files into a live website.</p>
+    </div>
+  </div>
+  <div class="callout callout-tip" style="margin-bottom:0;">
+    <div class="callout-title">Not a developer? That's fine.</div>
+    You don't need to write any code. Every step is copy-paste or point-and-click, with a screenshot for each one. If you can follow a recipe, you can follow this guide.
+  </div>
+</div>
+
+<div class="page-with-rail" style="padding-top:48px;">
 
   <nav class="step-rail">
     <div class="step-rail-title">On This Page</div>
     <ol>
       <li><a href="#step-1"><span class="step-rail-num">01</span> Copy the Sheet</a></li>
+      <li><a href="#step-sheet"><span class="step-rail-num">↳</span> Understanding the Sheet</a></li>
       <li><a href="#step-2"><span class="step-rail-num">02</span> Deploy Apps Script</a></li>
       <li><a href="#step-3"><span class="step-rail-num">03</span> Get the App File</a></li>
-      <li><a href="#step-4"><span class="step-rail-num">04</span> Host It (GitHub + Cloudflare)</a></li>
+      <li><a href="#step-4"><span class="step-rail-num">04</span> Host It</a></li>
       <li><a href="#step-5"><span class="step-rail-num">05</span> First-Run Wizard</a></li>
       <li><a href="#step-6"><span class="step-rail-num">06</span> Supabase (optional)</a></li>
       <li><a href="#step-7"><span class="step-rail-num">07</span> Health Check</a></li>
@@ -53,27 +82,136 @@
       <div class="setup-step-head">
         <span class="setup-step-num">STEP 01</span>
         <h2>Copy the Google Sheet template</h2>
-        <span class="setup-step-required req">Required</span>
+        <span class="setup-step-required req">Required · ~2 min</span>
       </div>
       <div class="setup-step-body">
-        <p>This Sheet is your card database — every Character, Weapon, Armoury item, Special Order, and Keyword definition the app reads lives here. It's free, and making your own copy means you fully own and control it.</p>
+        <p>This Sheet is your card database — it's where every Character, Weapon, Armoury item, Special Order, and Keyword definition lives. The app reads it every time it loads. Making your own copy means you fully own and control it: you can add cards, fix typos, or update stats at any time, and the app picks up the changes immediately on the next refresh.</p>
         <ol>
           <li>Open the template using the link below.</li>
-          <li>Go to <strong>File &rarr; Make a copy</strong>, and save it to your own Google Drive.</li>
-          <li>Rename it to whatever you like — the name doesn't matter to the app.</li>
+          <li>Go to <strong>File → Make a copy</strong>, and save it to your own Google Drive.</li>
+          <li>Rename it whatever you like — the name doesn't matter to the app.</li>
         </ol>
-        <div class="hero-actions" style="justify-content:flex-start;">
+        <div class="hero-actions" style="justify-content:flex-start; margin-bottom:20px;">
           <a href="#" class="btn btn-primary">Open the Free Sheet Template</a>
         </div>
       </div>
       <div class="shot">
-        <span class="shot-type">Screenshot</span>
-        <div class="shot-label">[ Google Sheet template, File &rarr; Make a copy menu open ]</div>
-        <div class="shot-desc">Show the template Sheet with its two tabs visible along the bottom (the main list and Keywords), and the File menu open with "Make a copy" highlighted.</div>
+        <span class="shot-type">GIF</span>
+        <div class="shot-label">[ Screen recording: opening the template → File → Make a copy → saved to Drive ]</div>
+        <div class="shot-desc">Short GIF (15–20 sec): open the Sheet, click File, hover over Make a copy, fill in a name, click OK, and show the new copy open in the user's own Drive with their Google account visible in the top-right corner.</div>
       </div>
       <div class="callout callout-tip">
-        <div class="callout-title">Tip</div>
-        There are only two tabs: one holds everything — Characters, Weapons, Armoury items, Special Orders, and Rules — distinguished by the <code>Type</code> column on each row, and the other is just for Keyword definitions. You'll be editing this Sheet directly any time you want to add or update cards, so it's worth taking a moment to look through it. The template comes with a few rows already filled in as worked examples — a full character (Mark VII), a weapon (MA40 Assault Rifle), a couple of items (Frag Grenade, Plasma Grenade), and a Rules row with a note on how to fill it in — so you can see exactly how a row should look before adding your own.
+        <div class="callout-title">What you'll see when you open it</div>
+        The Sheet has three tabs along the bottom: <strong>List</strong> (all your cards — Characters, Weapons, Armoury items, Special Orders, and Rules all live here, distinguished by the Type column), <strong>Keywords</strong> (the definitions that appear on hover inside the app), and <strong>Translations</strong> (the English and French UI text — touch this only if you want to add a new language or customise the wording). The template comes pre-filled with a few example rows so you can see exactly how a complete entry looks before you start adding your own.
+      </div>
+    </div>
+
+    <!-- SHEET GUIDE -->
+    <div class="setup-step" id="step-sheet">
+      <div class="setup-step-head">
+        <span class="setup-step-num">↳</span>
+        <h2>Understanding the Sheet</h2>
+        <span class="setup-step-required opt">Reference</span>
+      </div>
+      <div class="setup-step-body">
+        <p>You don't need to fill out the whole Sheet before the app works — the example rows are enough to test the connection in Step 5. But you'll need to understand the structure before you start adding real cards. This section explains how every part of it works.</p>
+      </div>
+
+      <h3 style="font-family:var(--font-head); font-size:18px; margin:0 0 10px; color:var(--text);">The List tab: one row = one card</h3>
+      <div class="setup-step-body">
+        <p>Each row in the List tab represents one card in the game. The <strong>Type</strong> column tells the app what kind of card it is — <code>Character</code>, <code>Armoury</code>, <code>Special Orders</code>, <code>Command Upgrades</code>, <code>Fireteam Upgrades</code>, or <code>Rules</code>. Every other column is the data that shows up on that card in the app.</p>
+
+        <p><strong>Columns explained:</strong></p>
+        <ul>
+          <li><strong>Item Name</strong> — the card's display name. This is what appears in the browse list and on the card itself. See the "Links in Item Name" section below for how to attach an image.</li>
+          <li><strong>Faction</strong> — which faction(s) can use this card. Use comma-separated values for items available to multiple factions (e.g. <code>UNSC, Banished</code>). The app uses this for competitive faction validation.</li>
+          <li><strong>Detachment</strong> — the detachment within a faction (e.g. <code>ODST</code>, <code>Jiralhanae</code>). Leave blank for cards with no detachment restriction.</li>
+          <li><strong>Type</strong> — see above. Must be one of the exact values the app recognises: <code>Character</code>, <code>Armoury</code>, <code>Special Orders</code>, <code>Command Upgrades</code>, <code>Fireteam Upgrades</code>, <code>Rules</code>.</li>
+          <li><strong>Points</strong> — the card's point cost. Numbers only, no units.</li>
+          <li><strong>Keywords</strong> — a comma-separated list of keyword names, exactly as they appear in the Keywords tab (e.g. <code>Energy Shield (2), Tactician (1)</code>). The app matches these against the Keywords tab to show hover definitions. Extra text in parentheses like <code>(2)</code> is fine — the match is flexible.</li>
+          <li><strong>RA / FI / SV / Speed / Armour / HP</strong> — the six stat columns for Character rows. Leave these blank (or with a dash) for non-Character rows like Armoury items.</li>
+          <li><strong>Weapon 1–3 columns</strong> — each weapon has a Type (<code>Ranged</code> or <code>Close Combat</code>), Name, Range, AP, and Keywords sub-column. For a character's built-in weapons, fill these in. For Armoury weapon rows, the app reads the weapon data from the same columns. See "Links in Weapon Names" below for attaching weapon images.</li>
+          <li><strong>Description</strong> — free text shown on the card and in the info panel. For Armoury items and Special Orders, this is the rules text. For Rules rows, this is the full rule text itself. Supports plain text; line breaks are fine.</li>
+          <li><strong>Restrictions</strong> — controls when an item can be added to a roster. Leave blank if there are no restrictions. See the Restrictions Guide tab in your Sheet for the full token reference.</li>
+        </ul>
+      </div>
+
+      <div class="shot">
+        <span class="shot-type">GIF</span>
+        <div class="shot-label">[ Screen recording: scrolling the List tab left-to-right, then clicking on a filled example row ]</div>
+        <div class="shot-desc">Short GIF showing the full column layout and then hovering/clicking on the Spartan MK VII example row so all its data is visible. Makes the column structure concrete before someone tries to fill one in themselves.</div>
+      </div>
+
+      <h3 style="font-family:var(--font-head); font-size:18px; margin:24px 0 10px; color:var(--text);">Adding image links — Item Name and Weapon Name cells</h3>
+      <div class="setup-step-body">
+        <p>The app can display card art and weapon images by reading a link embedded directly in the cell — not from a separate column. Here's how it works:</p>
+        <ol>
+          <li>Upload your card images to Google Drive (any folder is fine).</li>
+          <li>Right-click the image in Drive → <strong>Get link</strong> → change sharing to "Anyone with the link" → copy the link.</li>
+          <li>In your Sheet, click on the <strong>Item Name</strong> cell (or the <strong>Weapon Name</strong> cell) for that card.</li>
+          <li>Press <strong>Ctrl+K</strong> (or <strong>Cmd+K</strong> on Mac) to open the Insert Link dialog.</li>
+          <li>Paste the Google Drive link and click Apply. The cell text stays the same — it just now has a link underneath it that the app can read.</li>
+        </ol>
+        <p>The app checks whether a cell has a link attached to it. If it does, it uses that link as the image source. If it doesn't, it shows the default card placeholder. This means you can have a name like <strong>MA40 Assault Rifle</strong> display as text in the Sheet, but open as a card image inside the app.</p>
+      </div>
+
+      <div class="shot">
+        <span class="shot-type">GIF</span>
+        <div class="shot-label">[ Screen recording: right-clicking a Drive image → Get link → Ctrl+K in the Sheet cell → paste → Apply ]</div>
+        <div class="shot-desc">Show the whole flow: find the image in Drive, copy its link, go back to the Sheet, click into an Item Name cell, Ctrl+K, paste, click Apply. Then show the cell still showing the card name text but with the link underline indicator visible.</div>
+      </div>
+
+      <div class="callout callout-caution">
+        <div class="callout-title">Google Drive sharing: "Anyone with the link"</div>
+        The image link needs to be set to "Anyone with the link can view" — otherwise the app will get a permission error when it tries to load the image. The image is only displayed inside your own hosted copy of the app; this setting doesn't make the image searchable or publicly listed anywhere.
+      </div>
+
+      <h3 style="font-family:var(--font-head); font-size:18px; margin:24px 0 10px; color:var(--text);">The Keywords tab</h3>
+      <div class="setup-step-body">
+        <p>The Keywords tab has two columns: <strong>Keyword</strong> (the name, exactly as it'll be referenced in the List tab's Keywords column) and <strong>Definition</strong> (the rules text that appears on hover inside the app).</p>
+        <ul>
+          <li>A keyword in the List tab matches an entry here if the keyword name <em>contains</em> the entry's name — so <code>Energy Shield (2)</code> in a card's keywords will match the <code>Energy Shield</code> row in this tab.</li>
+          <li>If a keyword in a card's row has no matching entry here, the hover tooltip just won't appear for that keyword. Nothing breaks.</li>
+          <li>Keep definitions up to date with any official errata — this is the single source of truth the app uses for keyword text, so if Mantic changes a keyword's rules, just edit the definition here and every card that uses it updates automatically.</li>
+          <li>There's no limit on definition length, but shorter is more readable in the hover tooltip.</li>
+        </ul>
+      </div>
+
+      <div class="shot">
+        <span class="shot-type">Screenshot</span>
+        <div class="shot-label">[ Keywords tab showing Keyword and Definition columns with a couple of filled rows ]</div>
+        <div class="shot-desc">The Keywords tab with 2–3 example rows visible (e.g. Energy Shield and Tactician), alongside the matching card in the app showing the hover tooltip populated from that definition.</div>
+      </div>
+
+      <h3 style="font-family:var(--font-head); font-size:18px; margin:24px 0 10px; color:var(--text);">The Translations tab</h3>
+      <div class="setup-step-body">
+        <p>The Translations tab controls every piece of text in the app's UI — button labels, error messages, modal titles, PDF export strings, everything. It ships with English and French columns already filled in. You don't need to touch this tab unless you want to:</p>
+        <ul>
+          <li><strong>Add a new language:</strong> create a new column to the right of French. The column header becomes the language name shown in Settings. Fill in every row in that column with your translated text. The app will automatically make this language available as a choice in the Settings → Language selector — no code change required.</li>
+          <li><strong>Customise existing text:</strong> just edit the English or French cell directly. For example, if you want to change "Add to Roster" to "Add to List" in your own copy, edit that cell and the app picks it up on the next refresh.</li>
+        </ul>
+        <p>The Key column (first column, locked) is what the app uses internally to find each string. Don't edit the Key column. The English and French values are what actually appear in the UI.</p>
+      </div>
+
+      <div class="callout callout-tip">
+        <div class="callout-title">Tip: use the Sheet for everything text-related</div>
+        Because all UI text comes from your Sheet, you can translate the entire interface into any language without touching a line of code. The same goes for rule updates: if Mantic errata a keyword, edit the Keywords tab and you're done. No app update needed.
+      </div>
+
+      <h3 style="font-family:var(--font-head); font-size:18px; margin:24px 0 10px; color:var(--text);">The Restrictions column — quick reference</h3>
+      <div class="setup-step-body">
+        <p>The Restrictions column in the List tab controls when an item can be added to a roster. Leave it blank if there are no restrictions. Common tokens:</p>
+        <ul>
+          <li><code>REQUIRES_CHAR_NAME_INCLUDES:value</code> — roster must include a character whose name contains this text (e.g. <code>REQUIRES_CHAR_NAME_INCLUDES:master chief</code>)</li>
+          <li><code>REQUIRES_CHAR_FACTION_INCLUDES:value</code> — roster must include a character of this faction</li>
+          <li><code>REQUIRES_CHAR_DETACHMENT_INCLUDES:value</code> — roster must include a character in this detachment</li>
+          <li><code>ALL_CHARS_DETACHMENT:value</code> — every character in the roster must be this detachment (e.g. <code>ALL_CHARS_DETACHMENT:jiralhanae</code>)</li>
+          <li><code>ALL_CHARS_FACTION:value</code> — every character must be this faction</li>
+          <li><code>REQUIRES_WEAPON:value</code> — character must already have this weapon on their base card (used for replacement weapons like combat knives)</li>
+          <li><code>BLOCKS_LEGEND</code> — item cannot be equipped by Legend-tier characters</li>
+          <li><code>EXEMPT_FROM_WEAPON_LIMIT</code> — item doesn't count against the weapon-per-character cap</li>
+        </ul>
+        <p>Combine multiple tokens with a pipe character <code>|</code>. All conditions must be true. The full reference with examples is in the <strong>Restrictions Guide</strong> tab of your Sheet.</p>
       </div>
     </div>
 
@@ -82,38 +220,49 @@
       <div class="setup-step-head">
         <span class="setup-step-num">STEP 02</span>
         <h2>Deploy the Apps Script</h2>
-        <span class="setup-step-required req">Required</span>
+        <span class="setup-step-required req">Required · ~5 min</span>
       </div>
       <div class="setup-step-body">
-        <p>Apps Script is a small, free Google service that lets the app read your Sheet over the internet. You'll paste in a short piece of code, then deploy it as a private web app under your own Google account.</p>
+        <p>Apps Script is a small free Google service that connects your Sheet to the app. Think of it as a messenger: the app asks it "give me the card data from this Sheet," it reads the Sheet and sends the data back. You'll paste in a ready-made script and deploy it — no coding involved.</p>
         <ol>
-          <li>In your copied Sheet, go to <strong>Extensions &rarr; Apps Script</strong>.</li>
-          <li>Delete any starter code in the editor, and paste in the script provided in your purchase files (<code>Code.gs</code>).</li>
-          <li>Click <strong>Deploy &rarr; New deployment</strong>.</li>
-          <li>For "Select type," choose <strong>Web app</strong>.</li>
-          <li>Set <strong>Execute as</strong> to "Me," and <strong>Who has access</strong> to "Anyone." (This doesn't expose your Sheet data publicly in a meaningful way — it just allows your own app to fetch it. See the FAQ for details.)</li>
-          <li>Click <strong>Deploy</strong>, and authorize the script when Google prompts you.</li>
-          <li>Copy the <strong>Web app URL</strong> it gives you — it'll end in <code>/exec</code>. You'll need this in Step 5.</li>
+          <li>In your copied Sheet, go to <strong>Extensions → Apps Script</strong>. A new tab will open with a code editor.</li>
+          <li>You'll see a small amount of starter code already there. Select all of it and delete it.</li>
+          <li>Open the <code>Code.gs</code> file from your purchase download, copy the entire contents, and paste it into the editor.</li>
+          <li>Click the floppy disk icon (or press <strong>Ctrl+S</strong>) to save.</li>
+          <li>Click <strong>Deploy → New deployment</strong>.</li>
+          <li>Next to "Select type," click the gear icon and choose <strong>Web app</strong>.</li>
+          <li>Set <strong>Execute as</strong> to <strong>Me</strong>, and <strong>Who has access</strong> to <strong>Anyone</strong>.</li>
+          <li>Click <strong>Deploy</strong>. Google will ask you to authorise the script — click through the prompts and allow it.</li>
+          <li>Copy the <strong>Web app URL</strong> shown on the final screen. It ends in <code>/exec</code>. Save this somewhere — you'll paste it into the app in Step 5.</li>
         </ol>
       </div>
+
+      <div class="callout callout-caution">
+        <div class="callout-title">The "Anyone" setting — and why it's safe</div>
+        "Who has access: Anyone" sounds alarming, but it controls only who can call the script's web address — not who can see or edit your Sheet. The URL itself is long and effectively unguessable, and the script only exposes the specific read-only actions written into it. There is no way to reach anything else in your Google account through it. This is the standard way Apps Script web apps work. See the <a href="faq.html">FAQ</a> for a longer explanation.
+      </div>
+
+      <div class="shot">
+        <span class="shot-type">GIF</span>
+        <div class="shot-label">[ Screen recording: Extensions → Apps Script → paste code → save → Deploy → New deployment ]</div>
+        <div class="shot-desc">GIF showing: clicking Extensions → Apps Script, the editor opening, select-all and delete of starter code, paste of the new code, save, then Deploy → New deployment, the type selector with Web app chosen, the two dropdowns set correctly, and the Deploy button clicked. Stop before the authorisation step — that varies by account and is hard to capture cleanly.</div>
+      </div>
+
       <div class="shot">
         <span class="shot-type">Screenshot</span>
-        <div class="shot-label">[ Apps Script editor with Code.gs pasted in ]</div>
-        <div class="shot-desc">The Apps Script code editor showing the pasted script, with the Deploy button visible in the top right.</div>
+        <div class="shot-label">[ New deployment modal — Web app type selected, Execute as Me, Who has access Anyone ]</div>
+        <div class="shot-desc">The deployment dialog with all three settings circled or highlighted: type = Web app, Execute as = Me, Who has access = Anyone. This is the frame people will refer back to most.</div>
       </div>
+
       <div class="shot">
         <span class="shot-type">Screenshot</span>
-        <div class="shot-label">[ New deployment dialog — Web app type selected ]</div>
-        <div class="shot-desc">The "New deployment" modal with type set to Web app, Execute as "Me," and Who has access set to "Anyone." Circle or highlight these three settings specifically since they're the most common mistake point.</div>
+        <div class="shot-label">[ Deployment success screen — Web app URL visible ]</div>
+        <div class="shot-desc">The confirmation screen after deploying, with the Web app URL ending in /exec visible. Blur your actual URL in the screenshot — use a placeholder string instead.</div>
       </div>
-      <div class="shot">
-        <span class="shot-type">Screenshot</span>
-        <div class="shot-label">[ Deployment success screen showing the Web app URL ]</div>
-        <div class="shot-desc">The confirmation screen after deploying, with the Web app URL field visible (blur out your actual personal URL when capturing, or use a placeholder, since this guide is public).</div>
-      </div>
+
       <div class="callout callout-caution">
         <div class="callout-title">Most common mistake here</div>
-        If "Who has access" isn't set to <strong>Anyone</strong>, the app will fail to connect later with a confusing error. Double-check this setting before moving on.
+        If "Who has access" isn't set to <strong>Anyone</strong>, the app will fail to connect later with a confusing error. Double-check this setting before clicking Deploy.
       </div>
     </div>
 
@@ -121,11 +270,12 @@
     <div class="setup-step" id="step-3">
       <div class="setup-step-head">
         <span class="setup-step-num">STEP 03</span>
-        <h2>Get the app file</h2>
-        <span class="setup-step-required req">Required &middot; Paid</span>
+        <h2>Get the app files</h2>
+        <span class="setup-step-required req">Required · Paid</span>
       </div>
       <div class="setup-step-body">
-        <p>This is the one paid step. Purchasing gets you a single <code>index.html</code> file — the entire app, ready to host. Everything before and after this step is free.</p>
+        <p>This is the one paid step. Your purchase gives you a zip file containing three small files: the app itself (<code>index.html</code>), the service worker (<code>sw.js</code>), and the install manifest (<code>manifest.webmanifest</code>). Unzip it to a folder on your computer — you'll upload all three in the next step.</p>
+        <p>Everything before and after this step is free, and you've already done most of the work.</p>
         <div class="hero-actions" style="justify-content:flex-start;">
           <a href="#" class="btn btn-primary">Get the App on Itch.io</a>
         </div>
@@ -137,47 +287,66 @@
       <div class="setup-step-head">
         <span class="setup-step-num">STEP 04</span>
         <h2>Host it with GitHub + Cloudflare</h2>
-        <span class="setup-step-required req">Required</span>
+        <span class="setup-step-required req">Required · ~7 min</span>
       </div>
       <div class="setup-step-body">
-        <p>GitHub stores your copy of the app's code; Cloudflare is what actually serves it as a live website. Both are free at this scale, and connecting them takes a couple of minutes once your files are uploaded.</p>
+        <p>The app needs to be hosted at a real web address — not opened as a file on your computer — because it communicates with your Google Sheet over the internet. GitHub stores your files; Cloudflare turns them into a live website. Both are free for this use.</p>
+
+        <p><strong>Part A — GitHub:</strong></p>
         <ol>
-          <li>Create a free account at <a href="https://github.com" target="_blank">github.com</a> if you don't have one.</li>
-          <li>Click the <strong>+</strong> in the top right &rarr; <strong>New repository</strong>. Name it anything (e.g. <code>my-flashpoint-list</code>), and set it to <strong>Private</strong> &mdash; see the callout below for why.</li>
-          <li>Once created, click <strong>Add file &rarr; Upload files</strong>, and upload <strong>all three files</strong> from your purchase: <code>index.html</code>, <code>sw.js</code>, and <code>manifest.webmanifest</code>. All three need to sit in the same folder for the home screen install to work correctly — see the second callout below.</li>
-          <li>Create a free account at <a href="https://www.cloudflare.com" target="_blank">cloudflare.com</a> if you don't have one, then from the dashboard choose <strong>Workers &amp; Pages &rarr; Create &rarr; Connect to Git</strong>.</li>
-          <li>Authorize Cloudflare to access your GitHub account, then select the repository you just created.</li>
-          <li>Leave the build settings as their defaults (no build command, no framework needed — these are already-finished static files) and click <strong>Save and Deploy</strong>.</li>
-          <li>After a minute or two, Cloudflare will show your live URL. Open it once to confirm the app loads, then run through the setup wizard below.</li>
+          <li>Create a free account at <a href="https://github.com" target="_blank">github.com</a> if you don't have one already.</li>
+          <li>Click the <strong>+</strong> button in the top right → <strong>New repository</strong>.</li>
+          <li>Give it any name (e.g. <code>my-flashpoint-list</code>) and set the visibility to <strong>Private</strong>. See the callout below for why.</li>
+          <li>Click <strong>Create repository</strong>.</li>
+          <li>Once it's created, click <strong>Add file → Upload files</strong>.</li>
+          <li>Drag all three files from your purchase — <code>index.html</code>, <code>sw.js</code>, and <code>manifest.webmanifest</code> — into the upload area. All three must be in the same folder.</li>
+          <li>Click <strong>Commit changes</strong> at the bottom.</li>
+        </ol>
+
+        <p><strong>Part B — Cloudflare:</strong></p>
+        <ol>
+          <li>Create a free account at <a href="https://www.cloudflare.com" target="_blank">cloudflare.com</a>.</li>
+          <li>From your dashboard, go to <strong>Workers &amp; Pages → Create → Pages → Connect to Git</strong>.</li>
+          <li>Authorise Cloudflare to access your GitHub account when prompted.</li>
+          <li>Select the repository you just created.</li>
+          <li>On the build settings screen, leave everything as the default — no build command, no output directory. These are finished static files, not a project that needs compiling.</li>
+          <li>Click <strong>Save and Deploy</strong>. After a minute or two, Cloudflare will show your live URL.</li>
+          <li>Open that URL in your browser to confirm the app loads. You'll see the first-run setup screen — that's the next step.</li>
         </ol>
       </div>
+
       <div class="callout callout-caution">
-        <div class="callout-title">Why private, not public</div>
-        Keep the repository <strong>Private</strong> rather than Public. This app reads card data from your own Google Sheet, but that data — names, stats, rules text — comes from Mantic's published game. A private repo just keeps that content from being openly re-published in a browsable form on GitHub, which is good practice any time you're building a personal tool on top of someone else's game content, regardless of the platform. Cloudflare can deploy from a private repo exactly the same way as a public one, so this doesn't cost you anything in setup.
+        <div class="callout-title">Why Private, not Public</div>
+        Keep the repository <strong>Private</strong>. The app reads card data from your own Google Sheet, but that data — names, stats, rules text — comes from Mantic's published game. A private repository keeps that content from being re-published in a browsable form on GitHub. Cloudflare deploys from private repositories just as easily as public ones, so this costs you nothing extra.
       </div>
+
       <div class="callout callout-caution">
-        <div class="callout-title">Three files, not one</div>
-        <code>sw.js</code> and <code>manifest.webmanifest</code> need to be uploaded alongside <code>index.html</code>, in the exact same folder. The app works fine online without them, but without these two, "Add to Home Screen" won't show the correct app name or icon, and the app won't open full-screen.
+        <div class="callout-title">All three files, same folder</div>
+        <code>sw.js</code> and <code>manifest.webmanifest</code> must be uploaded alongside <code>index.html</code> in the same folder. The app works without them, but without these two files the "Add to Home Screen" install won't show the correct name or icon, and the app won't open full-screen on mobile.
       </div>
+
       <div class="shot">
         <span class="shot-type">Screenshot</span>
-        <div class="shot-label">[ GitHub: New repository creation screen ]</div>
-        <div class="shot-desc">The "Create a new repository" page with a repo name typed in and Private selected.</div>
+        <div class="shot-label">[ GitHub: New repository creation — name entered, Private selected ]</div>
+        <div class="shot-desc">The Create a new repository page with a repo name typed in and Private selected. Circle the Private radio button.</div>
       </div>
+
       <div class="shot">
         <span class="shot-type">Screenshot</span>
-        <div class="shot-label">[ GitHub: Upload files screen with all three files added ]</div>
-        <div class="shot-desc">The drag-and-drop upload screen showing index.html, sw.js, and manifest.webmanifest added and ready to commit.</div>
+        <div class="shot-label">[ GitHub: upload screen showing all three files ready to commit ]</div>
+        <div class="shot-desc">The drag-and-drop upload screen with index.html, sw.js, and manifest.webmanifest all showing in the "added files" list.</div>
       </div>
+
+      <div class="shot">
+        <span class="shot-type">GIF</span>
+        <div class="shot-label">[ Screen recording: Cloudflare Workers &amp; Pages → Connect to Git → select repo → deploy ]</div>
+        <div class="shot-desc">GIF of the Cloudflare flow: clicking Workers &amp; Pages, Create, Pages, Connect to Git, selecting the GitHub repo, the build settings screen (highlight that nothing needs to change), and clicking Save and Deploy. Stop at the deployment progress screen.</div>
+      </div>
+
       <div class="shot">
         <span class="shot-type">Screenshot</span>
-        <div class="shot-label">[ Cloudflare: Connect to Git repository selection screen ]</div>
-        <div class="shot-desc">The Cloudflare Workers &amp; Pages screen showing the GitHub repository selected and ready to deploy.</div>
-      </div>
-      <div class="shot">
-        <span class="shot-type">Screenshot</span>
-        <div class="shot-label">[ Cloudflare: deployment success screen with the live URL ]</div>
-        <div class="shot-desc">The "Success! Your site is live" confirmation with the generated URL visible.</div>
+        <div class="shot-label">[ Cloudflare: deployment success — live URL visible ]</div>
+        <div class="shot-desc">The success screen showing the generated .pages.dev URL. You can blur the specific subdomain if you prefer.</div>
       </div>
     </div>
 
@@ -186,21 +355,27 @@
       <div class="setup-step-head">
         <span class="setup-step-num">STEP 05</span>
         <h2>First-run setup wizard</h2>
-        <span class="setup-step-required req">Required</span>
+        <span class="setup-step-required req">Required · ~2 min</span>
       </div>
       <div class="setup-step-body">
-        <p>Open your new live URL from Step 4. Since this is a fresh copy, the app will show a setup screen instead of jumping straight in.</p>
+        <p>Open your new live URL from Step 4. Because it's a fresh copy with no connection configured yet, the app shows a setup screen before anything else. This is where you paste in the Apps Script URL from Step 2 and test the connection.</p>
         <ol>
-          <li>Paste the Apps Script Web app URL you copied in Step 2 into the first field.</li>
-          <li>Click <strong>Test Connection</strong>. You should see a confirmation showing how many rows it found in your Sheet.</li>
+          <li>Paste the Web app URL you saved at the end of Step 2 into the input field.</li>
+          <li>Click <strong>Test Connection</strong>. If everything is connected correctly, you'll see a green confirmation showing how many rows of card data it found in your Sheet.</li>
           <li>Click <strong>Save &amp; Continue</strong>.</li>
         </ol>
-        <p>That's it — the app is now fully connected to your Sheet. Anything you add or edit in the Sheet will appear in the app after a refresh.</p>
+        <p>The app is now connected to your Sheet. From here, anything you add or edit in the Sheet will appear in the app after a page refresh.</p>
       </div>
+
       <div class="shot">
-        <span class="shot-type">Screenshot</span>
-        <div class="shot-label">[ First-run Setup Wizard, Step 1 field with a successful test result ]</div>
-        <div class="shot-desc">The in-app wizard screen with the Apps Script URL pasted in and the green "Connected — found X rows" message showing under the Test Connection button.</div>
+        <span class="shot-type">GIF</span>
+        <div class="shot-label">[ Screen recording: in-app wizard — paste URL → Test Connection → green success → Save &amp; Continue → app loads ]</div>
+        <div class="shot-desc">GIF showing: the setup wizard open, paste into the URL field, click Test Connection, the green "Connected — found X rows" result appearing, then Save &amp; Continue, and the app loading its Browse panel with cards visible. This is the most satisfying moment in the setup flow — make it visible.</div>
+      </div>
+
+      <div class="callout callout-caution">
+        <div class="callout-title">If Test Connection fails</div>
+        The most common cause is the "Who has access" setting from Step 2 not being set to <strong>Anyone</strong>. Go back to Extensions → Apps Script → Manage deployments, check the setting, and redeploy if needed. The new URL after redeployment will be different — update it in the wizard.
       </div>
     </div>
 
@@ -209,32 +384,36 @@
       <div class="setup-step-head">
         <span class="setup-step-num">STEP 06</span>
         <h2>Connect Supabase for cloud saves</h2>
-        <span class="setup-step-required opt">Optional</span>
+        <span class="setup-step-required opt">Optional · ~5 min</span>
       </div>
       <div class="setup-step-body">
-        <p>This step lets you save rosters to the cloud and load them on any device. If you skip it, you can still save and load rosters locally as JSON files — that always works with zero setup.</p>
+        <p>This step adds cloud roster saves — the ability to save a roster in the app and load it again on any device (your phone, your partner's tablet, a different computer). If you skip it, you can still save and share rosters as JSON files, which works with zero setup and never expires.</p>
         <ol>
           <li>Create a free account at <a href="https://supabase.com" target="_blank">supabase.com</a>.</li>
-          <li>Create a new project (pick any name and a database password — store the password somewhere safe, you won't need it for this setup but Supabase requires it).</li>
-          <li>Once the project is ready, go to the <strong>SQL Editor</strong> and run the table-creation script provided in your purchase files (<code>supabase-setup.sql</code>) to create the <code>rosters</code> table.</li>
-          <li>Go to <strong>Project Settings &rarr; API</strong>. Copy the <strong>Project URL</strong> and the <strong>anon public</strong> key.</li>
-          <li>Back in the app, open <strong>Settings &rarr; Edit Connections</strong>, paste both values into the Supabase fields, and click <strong>Test Connection</strong>.</li>
+          <li>Click <strong>New project</strong>. Give it a name, set a database password (store it somewhere — you won't need it often, but Supabase requires it), and choose the region closest to you.</li>
+          <li>Wait for the project to finish initialising (usually 1–2 minutes).</li>
+          <li>Go to the <strong>SQL Editor</strong> tab in your project dashboard.</li>
+          <li>Open the <code>supabase-setup.sql</code> file from your purchase download, copy its contents, and paste it into the editor. Click <strong>Run</strong>. This creates the single table the app needs to save rosters.</li>
+          <li>Go to <strong>Project Settings → API</strong>. Copy the <strong>Project URL</strong> and the <strong>anon public</strong> key (not the service_role key).</li>
+          <li>Back in the app, open <strong>Settings → Edit Connections</strong>, paste both values into the Supabase fields, and click <strong>Test Connection</strong>.</li>
         </ol>
       </div>
+
       <div class="shot">
         <span class="shot-type">Screenshot</span>
-        <div class="shot-label">[ Supabase: new project creation screen ]</div>
-        <div class="shot-desc">The Supabase dashboard's new project form.</div>
+        <div class="shot-label">[ Supabase SQL Editor — setup script pasted and run successfully ]</div>
+        <div class="shot-desc">The SQL Editor with the table-creation script pasted in, and the green "Success. No rows returned" confirmation below it after clicking Run.</div>
       </div>
+
       <div class="shot">
         <span class="shot-type">Screenshot</span>
-        <div class="shot-label">[ Supabase SQL Editor with the setup script pasted and run successfully ]</div>
-        <div class="shot-desc">The SQL Editor with the table-creation script and the green "Success" confirmation after running it.</div>
+        <div class="shot-label">[ Supabase Project Settings → API — Project URL and anon key visible ]</div>
+        <div class="shot-desc">The API settings page showing both fields. Blur or replace the actual values with placeholders.</div>
       </div>
-      <div class="shot">
-        <span class="shot-type">Screenshot</span>
-        <div class="shot-label">[ Supabase Project Settings &rarr; API page, URL and anon key visible ]</div>
-        <div class="shot-desc">The API settings page. Blur or placeholder the actual key values since this guide is public.</div>
+
+      <div class="callout callout-tip">
+        <div class="callout-title">Skipping this for now is completely fine</div>
+        You can always add Supabase later from Settings → Edit Connections without redoing any other step. Local JSON save/load always works regardless — it doesn't require Supabase.
       </div>
     </div>
 
@@ -243,20 +422,22 @@
       <div class="setup-step-head">
         <span class="setup-step-num">STEP 07</span>
         <h2>Run a Health Check</h2>
-        <span class="setup-step-required opt">Recommended</span>
+        <span class="setup-step-required opt">Recommended · ~1 min</span>
       </div>
       <div class="setup-step-body">
-        <p>Before you start building lists, open <strong>Settings &rarr; Run Health Check</strong>. It scans your Sheet data for the most common setup mistakes — missing fields, duplicate names, keywords with broken links — and tells you exactly what to fix, if anything.</p>
-        <p>A clean Health Check result means your Sheet is properly structured and you're ready to build your first roster.</p>
+        <p>Before building your first list, go to <strong>Settings → Sheet Health Check → Run Health Check</strong>. This scans your card data for the most common setup problems: missing required fields, duplicate card names, keywords referenced in cards that don't exist in the Keywords tab, and broken image links.</p>
+        <p>A clean result (zero errors) means your Sheet is correctly structured and the app will behave as expected. If there are warnings, the Health Check tells you exactly which row and column to look at.</p>
       </div>
+
       <div class="shot">
         <span class="shot-type">Screenshot</span>
-        <div class="shot-label">[ Health Check modal showing a clean "All clear" result ]</div>
-        <div class="shot-desc">The Health Check results screen with 0 errors, 0 warnings, and the green all-clear message.</div>
+        <div class="shot-label">[ Health Check modal — clean result, zero errors ]</div>
+        <div class="shot-desc">The Health Check results panel showing 0 errors, 0 warnings, and a green all-clear state.</div>
       </div>
+
       <div class="callout callout-tip">
         <div class="callout-title">You're done</div>
-        From here, head to the <a href="features.html">Features</a> page for a tour of what the app can do, or just start building your first list.
+        From here, head to the <a href="features.html">Features</a> page for a tour of everything the app can do — or just start building your first roster. Any time you add new cards to the Sheet, run the Health Check again to catch any typos before they cause a problem mid-game.
       </div>
     </div>
 
