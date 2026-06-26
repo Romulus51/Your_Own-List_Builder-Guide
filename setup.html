@@ -27,7 +27,7 @@
   <div class="hero-eyebrow">SETUP GUIDE</div>
   <h1 style="font-size:38px;">About 15–20 minutes, done once</h1>
   <p class="hero-sub" style="margin-bottom:0;">
-    Everything below is free to follow, including the Google Sheet template. You only need a paid file at Step 3 — the very last technical step before the app runs.
+    Everything below is free, including the Google Sheet template, the Apps Script connector, and the Supabase table script. The only paid file is the app itself — and that's Step 3, right before it goes live.
   </p>
 </section>
 
@@ -227,7 +227,7 @@
         <ol>
           <li>In your copied Sheet, go to <strong>Extensions → Apps Script</strong>. A new tab will open with a code editor.</li>
           <li>You'll see a small amount of starter code already there. Select all of it and delete it.</li>
-          <li>Open the <code>Code.gs</code> file from your purchase download, copy the entire contents, and paste it into the editor.</li>
+          <li>Open <code>Code.gs</code> using the free link below, copy the entire contents, and paste it into the editor.</li>
           <li>Click the floppy disk icon (or press <strong>Ctrl+S</strong>) to save.</li>
           <li>Click <strong>Deploy → New deployment</strong>.</li>
           <li>Next to "Select type," click the gear icon and choose <strong>Web app</strong>.</li>
@@ -236,6 +236,12 @@
           <li>Copy the <strong>Web app URL</strong> shown on the final screen. It ends in <code>/exec</code>. Save this somewhere — you'll paste it into the app in Step 5.</li>
         </ol>
       </div>
+
+      <div class="hero-actions" style="justify-content:flex-start; margin-bottom:8px;">
+        <a href="https://raw.githubusercontent.com/romulus51/Halo_Flashpoint-List_Builder-Guide/main/files/Code.gs" target="_blank" class="btn btn-primary">Download Code.gs — Free</a>
+        <a href="https://raw.githubusercontent.com/romulus51/Halo_Flashpoint-List_Builder-Guide/main/files/appsscript.json" target="_blank" class="btn btn-ghost">Download appsscript.json</a>
+      </div>
+      <p style="font-size:13px; color:var(--text3); margin-bottom:24px;"><code>appsscript.json</code> is optional — it pre-configures the script's permissions so the authorisation step is smoother. To use it: in the Apps Script editor, go to <strong>Project Settings → Show "appsscript.json" manifest file in editor</strong>, then replace the file's contents with the downloaded version before deploying.</p>
 
       <div class="callout callout-caution">
         <div class="callout-title">The "Anyone" setting — and why it's safe</div>
@@ -274,8 +280,7 @@
         <span class="setup-step-required req">Required · Paid</span>
       </div>
       <div class="setup-step-body">
-        <p>This is the one paid step. Your purchase gives you a zip file containing three small files: the app itself (<code>index.html</code>), the service worker (<code>sw.js</code>), and the install manifest (<code>manifest.webmanifest</code>). Unzip it to a folder on your computer — you'll upload all three in the next step.</p>
-        <p>Everything before and after this step is free, and you've already done most of the work.</p>
+        <p>This is the one paid step. Your purchase gives you a zip file containing the three app files: <code>index.html</code> (the app itself), <code>sw.js</code> (the service worker), and <code>manifest.webmanifest</code> (the install manifest). The connector script and the Supabase table script are both free — you already downloaded them in the steps above. Unzip the purchase to a folder on your computer and you're ready for the next step.</p>
         <div class="hero-actions" style="justify-content:flex-start;">
           <a href="#" class="btn btn-primary">Get the App on Itch.io</a>
         </div>
@@ -393,7 +398,16 @@
           <li>Click <strong>New project</strong>. Give it a name, set a database password (store it somewhere — you won't need it often, but Supabase requires it), and choose the region closest to you.</li>
           <li>Wait for the project to finish initialising (usually 1–2 minutes).</li>
           <li>Go to the <strong>SQL Editor</strong> tab in your project dashboard.</li>
-          <li>Open the <code>supabase-setup.sql</code> file from your purchase download, copy its contents, and paste it into the editor. Click <strong>Run</strong>. This creates the single table the app needs to save rosters.</li>
+          <li>Download the free <code>supabase-setup.sql</code> file using the link below, copy its contents, and paste it into the editor. Click <strong>Run</strong>. This creates the single table the app needs to save rosters.</li>
+        </ol>
+      </div>
+
+      <div class="hero-actions" style="justify-content:flex-start; margin-bottom:24px;">
+        <a href="https://raw.githubusercontent.com/romulus51/Halo_Flashpoint-List_Builder-Guide/main/files/supabase-setup.sql" target="_blank" class="btn btn-ghost">Download supabase-setup.sql — Free</a>
+      </div>
+
+      <div class="setup-step-body">
+        <ol start="6">
           <li>Go to <strong>Project Settings → API</strong>. Copy the <strong>Project URL</strong> and the <strong>anon public</strong> key (not the service_role key).</li>
           <li>Back in the app, open <strong>Settings → Edit Connections</strong>, paste both values into the Supabase fields, and click <strong>Test Connection</strong>.</li>
         </ol>
