@@ -1,5 +1,5 @@
 ============================================================
- HALO: FLASHPOINT LIST BUILDER
+ YOUR OWN LIST BUILDER
  Thanks for picking this up.
 ============================================================
 
@@ -9,7 +9,7 @@ what order to use it in.
 START HERE — the full setup guide, with a screenshot for every
 step, lives here:
 
-    https://romulus51.github.io/Halo_Flashpoint-List_Builder-Guide/setup.html
+    https://romulus51.github.io/Your_Own-List_Builder-Guide/setup.html
 
 This file is just a quick orientation in case you're looking at
 these files before reading that guide. The guide is the real
@@ -50,10 +50,10 @@ in this zip. They are free downloads linked directly from the
 setup guide at exactly the step you need them:
 
   Step 2 — Code.gs and appsscript.json (Apps Script connector):
-  https://romulus51.github.io/Halo_Flashpoint-List_Builder-Guide/setup.html#step-2
+  https://romulus51.github.io/Your_Own-List_Builder-Guide/setup.html#step-2
 
   Step 6 — supabase-setup.sql (optional cloud saves):
-  https://romulus51.github.io/Halo_Flashpoint-List_Builder-Guide/setup.html#step-6
+  https://romulus51.github.io/Your_Own-List_Builder-Guide/setup.html#step-6
 
 
 ------------------------------------------------------------
@@ -77,7 +77,7 @@ Every one of these steps has its own screenshots in the full
 guide. None of this needs to be figured out from scratch —
 just follow along:
 
-    https://romulus51.github.io/Halo_Flashpoint-List_Builder-Guide/setup.html
+    https://romulus51.github.io/Your_Own-List_Builder-Guide/setup.html
 
 
 ------------------------------------------------------------
@@ -106,7 +106,7 @@ just follow along:
 
   - Updates: if a new version comes out, updating just means
     downloading the new index.html and re-uploading it to
-    your GitHub/Cloudflare project. Your Sheet, your saved
+    your GitHub project (Cloudflare automatically updates). Your Sheet, your saved
     rosters, and your connections are untouched by this.
 
 
@@ -118,7 +118,7 @@ Check the FAQ first — it covers most setup questions directly,
 including the "Who has access: Anyone" Apps Script setting
 that trips people up the most:
 
-    https://romulus51.github.io/Halo_Flashpoint-List_Builder-Guide/faq.html
+    https://romulus51.github.io/Your_Own-List_Builder-Guide/faq.html
 
 ------------------------------------------------------------
 
