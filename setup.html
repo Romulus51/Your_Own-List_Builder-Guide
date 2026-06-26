@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Setup Guide — Halo Flashpoint List Builder</title>
+<title>Setup Guide — Your Own List Builder</title>
 <meta name="description" content="Step-by-step setup guide: copy the Sheet, deploy Apps Script, host the app, and optionally connect Supabase for cloud saves."/>
 <link rel="stylesheet" href="style.css"/>
 </head>
@@ -11,7 +11,7 @@
 
 <header class="site-header">
   <div class="site-header-inner">
-    <div class="site-logo">FLASHPOINT <span>LIST BUILDER</span></div>
+    <div class="site-logo">YOUR OWN <span>LIST BUILDER</span></div>
     <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation">&#9776;</button>
     <nav class="site-nav">
       <a href="index.html">Overview</a>
@@ -72,6 +72,7 @@
       <li><a href="#step-5"><span class="step-rail-num">05</span> First-Run Wizard</a></li>
       <li><a href="#step-6"><span class="step-rail-num">06</span> Supabase (optional)</a></li>
       <li><a href="#step-7"><span class="step-rail-num">07</span> Health Check</a></li>
+      <li><a href="#step-pwa"><span class="step-rail-num">⊕</span> iOS Home Screen</a></li>
     </ol>
   </nav>
 
@@ -280,7 +281,7 @@
         <span class="setup-step-required req">Required · Paid</span>
       </div>
       <div class="setup-step-body">
-        <p>This is the one paid step. Your purchase gives you a zip file containing the three app files: <code>index.html</code> (the app itself), <code>sw.js</code> (the service worker), and <code>manifest.webmanifest</code> (the install manifest). The connector script and the Supabase table script are both free — you already downloaded them in the steps above. Unzip the purchase to a folder on your computer and you're ready for the next step.</p>
+        <p>This is the one paid step. Your purchase gives you a zip file containing the app files: <code>index.html</code> (the app itself), <code>sw.js</code> (the service worker), <code>manifest.webmanifest</code> (the install manifest), and <code>apple-touch-icon.png</code> (the home screen icon on iOS). The connector script and the Supabase table script are both free — you already downloaded them in the steps above. Unzip the purchase to a folder on your computer and you're ready for the next step.</p>
         <div class="hero-actions" style="justify-content:flex-start;">
           <a href="#" class="btn btn-primary">Get the App on Itch.io</a>
         </div>
@@ -304,7 +305,7 @@
           <li>Give it any name (e.g. <code>my-flashpoint-list</code>) and set the visibility to <strong>Private</strong>. See the callout below for why.</li>
           <li>Click <strong>Create repository</strong>.</li>
           <li>Once it's created, click <strong>Add file → Upload files</strong>.</li>
-          <li>Drag all three files from your purchase — <code>index.html</code>, <code>sw.js</code>, and <code>manifest.webmanifest</code> — into the upload area.</li>
+          <li>Drag all four files from your purchase — <code>index.html</code>, <code>sw.js</code>, <code>manifest.webmanifest</code>, and <code>apple-touch-icon.png</code> — into the upload area. All four must be in the same folder.</li>
           <li>Click <strong>Commit changes</strong> at the bottom.</li>
         </ol>
 
@@ -326,8 +327,8 @@
       </div>
 
       <div class="callout callout-caution">
-        <div class="callout-title">All three files, same folder</div>
-        <code>sw.js</code> and <code>manifest.webmanifest</code> must be uploaded alongside <code>index.html</code> in the same folder. The app works without them, but without these two files the "Add to Home Screen" install won't show the correct name or icon, and the app won't open full-screen on mobile.
+        <div class="callout-title">All four files, same folder</div>
+        All four files must be uploaded together in the same folder: <code>index.html</code>, <code>sw.js</code>, <code>manifest.webmanifest</code>, and <code>apple-touch-icon.png</code>. The app works without them, but without these companion files the "Add to Home Screen" install won't show the correct name or icon, and the app won't open full-screen on mobile — particularly on iOS, which requires the <code>apple-touch-icon.png</code> specifically for the home screen icon.
       </div>
 
       <div class="shot">
@@ -339,7 +340,7 @@
       <div class="shot">
         <span class="shot-type">Screenshot</span>
         <div class="shot-label">[ GitHub: upload screen showing all three files ready to commit ]</div>
-        <div class="shot-desc">The drag-and-drop upload screen with index.html, sw.js, and manifest.webmanifest all showing in the "added files" list.</div>
+        <div class="shot-desc">The drag-and-drop upload screen with index.html, sw.js, manifest.webmanifest, and apple-touch-icon.png all showing in the "added files" list.</div>
       </div>
 
       <div class="shot">
@@ -452,6 +453,44 @@
       <div class="callout callout-tip">
         <div class="callout-title">You're done</div>
         From here, head to the <a href="features.html">Features</a> page for a tour of everything the app can do — or just start building your first roster. Any time you add new cards to the Sheet, run the Health Check again to catch any typos before they cause a problem mid-game.
+      </div>
+    </div>
+
+    <!-- STEP 8: iOS PWA Install -->
+    <div class="setup-step" id="step-pwa">
+      <div class="setup-step-head">
+        <span class="setup-step-num">BONUS</span>
+        <h2>Add to Home Screen on iPhone or iPad</h2>
+        <span class="setup-step-required opt">Optional · ~1 min</span>
+      </div>
+      <div class="setup-step-body">
+        <p>Once the app is live at your Cloudflare URL, you can install it on your iPhone or iPad so it opens like a native app — full screen, no browser bar, with its own icon on your home screen. This works in Safari only; Chrome and Firefox on iOS can't install web apps to the home screen.</p>
+        <ol>
+          <li>Open your Cloudflare URL in <strong>Safari</strong> on your iPhone or iPad.</li>
+          <li>Wait for the page to fully load — you should see the app's first-run setup screen or the Browse panel if you've already connected your Sheet.</li>
+          <li>Tap the <strong>Share</strong> button at the bottom of the screen (the box with an arrow pointing up).</li>
+          <li>Scroll down in the share sheet and tap <strong>Add to Home Screen</strong>.</li>
+          <li>Give it a name (or keep the default) and tap <strong>Add</strong> in the top right.</li>
+          <li>The app now appears on your home screen with its own icon. Opening it from there launches it full-screen.</li>
+        </ol>
+      </div>
+      <div class="shot">
+        <span class="shot-type">Screenshot</span>
+        <div class="shot-label">[ iPhone: Safari share sheet with "Add to Home Screen" visible ]</div>
+        <div class="shot-desc">The iOS share sheet open in Safari, scrolled to show the "Add to Home Screen" option highlighted.</div>
+      </div>
+      <div class="shot">
+        <span class="shot-type">Screenshot</span>
+        <div class="shot-label">[ iPhone home screen showing the app icon installed ]</div>
+        <div class="shot-desc">The iOS home screen with the list builder icon visible among other apps, showing it installed correctly with the right name and icon.</div>
+      </div>
+      <div class="callout callout-caution">
+        <div class="callout-title">Must be Safari — not Chrome or Firefox</div>
+        "Add to Home Screen" for web apps only works in Safari on iOS. If you open the Cloudflare URL in Chrome or Firefox on your iPhone, the option will either be missing or won't create a proper installed app experience. Once installed, you can use it in any orientation and it opens without the browser's address bar.
+      </div>
+      <div class="callout callout-tip">
+        <div class="callout-title">Offline use after install</div>
+        After installing and loading the app once with signal, it'll keep working for the rest of that session even if you lose connection. The <code>apple-touch-icon.png</code> file in your GitHub repository is what gives the home screen icon its correct appearance on iOS — without it, iOS falls back to a generic screenshot thumbnail.
       </div>
     </div>
 

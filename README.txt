@@ -42,6 +42,12 @@ instructions — this is the map.
       name and icon, and for the app to open full-screen without
       Safari's browser bar. Same folder as index.html and sw.js.
 
+  apple-touch-icon.png
+      The home screen icon for iOS devices. When someone taps
+      "Add to Home Screen" in Safari, this is the icon that
+      appears. Without it, iOS uses a blurry screenshot instead.
+      Same folder as the other files.
+
   README.txt
       This file.
 
@@ -63,9 +69,10 @@ setup guide at exactly the step you need them:
   1. Copy the free Google Sheet template
   2. Deploy the free Apps Script connector (Code.gs — free
      download linked from the setup guide at Step 2)
-  3. Upload these three files to a private GitHub repository,
+  3. Upload these four files to a private GitHub repository,
      then deploy through Cloudflare (this step — index.html,
-     sw.js, manifest.webmanifest all in the same folder)
+     sw.js, manifest.webmanifest, and apple-touch-icon.png
+     all in the same folder)
   4. Open your hosted link and run through the in-app
      setup wizard
   5. Optional: set up Supabase for cloud roster saves

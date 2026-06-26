@@ -137,7 +137,7 @@
         <span class="faq-q-mark">+</span>
       </div>
       <div class="faq-a">
-        <p>The app's four files: <code>index.html</code> (the app itself), <code>sw.js</code> (service worker for offline resilience), <code>apple-touch-icon.png<code> (App icon on mobile) and <code>manifest.webmanifest</code> (home screen install). The Apps Script connectors (<code>Code.gs</code> & <code>appsscript.json</code>), the Supabase table script, and this entire guide are all free — no purchase required to access them.</p>
+        <p>The app's four files: <code>index.html</code> (the app itself), <code>sw.js</code> (service worker for offline resilience), <code>apple-touch-icon.png</code> (home screen icon on iOS) and <code>manifest.webmanifest</code> (home screen install). The Apps Script connectors (<code>Code.gs</code> & <code>appsscript.json</code>), the Supabase table script, and this entire guide are all free — no purchase required to access them.</p>
       </div>
     </div>
 
@@ -187,11 +187,57 @@
 
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+        How do I install it on my iPhone or iPad?
+        <span class="faq-q-mark">+</span>
+      </div>
+      <div class="faq-a">
+        <p>Open your Cloudflare URL in <strong>Safari</strong> (not Chrome or Firefox — those can't install web apps on iOS). Once the page has loaded, tap the <strong>Share button</strong> (the box with an arrow at the bottom of the screen), scroll down, and tap <strong>Add to Home Screen</strong>. Give it a name and tap Add. It'll appear on your home screen with its own icon and open full-screen, just like a native app.</p>
+        <p>The <code>apple-touch-icon.png</code> file in your repository is what gives the icon its correct appearance — without it, iOS uses a generic screenshot instead. Full step-by-step instructions with screenshots are in the <a href="setup.html#step-pwa">Setup Guide</a>.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this.parentElement)">
         Should I still consider the official Mantic app?
         <span class="faq-q-mark">+</span>
       </div>
       <div class="faq-a">
         <p>If you play in ranked events or care about Global Rankings, yes — those aren't included on our side, and Mantic's official app ($2.99/mo) is the real way to get them. Worth knowing: Mantic's free tier already covers full rules and one list at no cost, so it's worth checking whether you actually need the paid tier before assuming you do. This tool is built for casual players who want a great list builder without an ongoing bill.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="section-label" style="margin-top:56px;">Feedback &amp; Bugs</div>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+        I found a bug — how do I report it?
+        <span class="faq-q-mark">+</span>
+      </div>
+      <div class="faq-a">
+        <p>The best place is the <strong>itch.io page</strong> — leave a comment there describing what happened, what you were doing at the time, and which browser and device you were on. Screenshots help a lot if you can grab one. I check comments regularly and will respond there.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+        I have a feature request or suggestion.
+        <span class="faq-q-mark">+</span>
+      </div>
+      <div class="faq-a">
+        <p>Please do send them — the best features in the app came from thinking through real use cases, and I genuinely want to hear what would make this more useful for you. Leave a comment on the <strong>itch.io page</strong> with your idea. No guarantees on timelines, but everything gets read and considered.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+        Something in the setup isn't working and I'm stuck.
+        <span class="faq-q-mark">+</span>
+      </div>
+      <div class="faq-a">
+        <p>Check the <a href="setup.html">setup guide</a> first — the most common issues (especially the Apps Script "Anyone" setting and the Test Connection failure) are covered there with specific fixes. If you're still stuck, leave a comment on the <strong>itch.io page</strong> describing exactly where you're at and what error message you're seeing. I'll help you through it.</p>
       </div>
     </div>
   </div>
