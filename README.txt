@@ -42,19 +42,18 @@ instructions — this is the map.
       name and icon, and for the app to open full-screen without
       Safari's browser bar. Same folder as index.html and sw.js.
 
-  Code.gs
-      The Apps Script connector. You'll paste this into your
-      copied Google Sheet's script editor in Step 2. This is
-      what lets the app read your Sheet's data.
-
-  supabase-setup.sql
-      Optional. Only needed if you want cloud roster saves
-      (Step 6 in the guide — Supabase). Skip this file
-      entirely if you're happy with local save/load via JSON
-      export, which always works with zero extra setup.
-
   README.txt
       This file.
+
+NOTE: Code.gs, appsscript.json, and supabase-setup.sql are NOT
+in this zip. They are free downloads linked directly from the
+setup guide at exactly the step you need them:
+
+  Step 2 — Code.gs and appsscript.json (Apps Script connector):
+  https://romulus51.github.io/Halo_Flashpoint-List_Builder-Guide/setup.html#step-2
+
+  Step 6 — supabase-setup.sql (optional cloud saves):
+  https://romulus51.github.io/Halo_Flashpoint-List_Builder-Guide/setup.html#step-6
 
 
 ------------------------------------------------------------
@@ -62,15 +61,16 @@ instructions — this is the map.
 ------------------------------------------------------------
 
   1. Copy the free Google Sheet template
-  2. Paste Code.gs into Apps Script and deploy it
-  3. (you already have index.html — this is that step)
-  4. Host index.html + sw.js + manifest.webmanifest together
-     (same folder) in a PRIVATE GitHub repository, deployed
-     through Cloudflare
-  5. Open your hosted link and run through the in-app
+  2. Deploy the free Apps Script connector (Code.gs — free
+     download linked from the setup guide at Step 2)
+  3. Upload these three files to a private GitHub repository,
+     then deploy through Cloudflare (this step — index.html,
+     sw.js, manifest.webmanifest all in the same folder)
+  4. Open your hosted link and run through the in-app
      setup wizard
-  6. Optional: run supabase-setup.sql for cloud saves
-  7. Run a Health Check inside the app before building
+  5. Optional: set up Supabase for cloud roster saves
+     (supabase-setup.sql — free download linked from Step 6)
+  6. Run a Health Check inside the app before building
      your first list
 
 Every one of these steps has its own screenshots in the full
