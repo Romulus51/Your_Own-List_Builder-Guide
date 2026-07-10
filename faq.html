@@ -137,7 +137,7 @@
         <span class="faq-q-mark">+</span>
       </div>
       <div class="faq-a">
-        <p>The app's five files: <code>index.html</code> (the app itself), <code>sw.js</code> (service worker for offline resilience), <code>manifest.webmanifest</code> (home screen install), <code>apple-touch-icon.png</code> (home screen icon on iOS), and <code>wrangler.json</code> (Cloudflare deployment configuration). The Apps Script connectors (<code>Code.gs</code> &amp; <code>appsscript.json</code>), the Supabase table script, and this entire guide are all free — no purchase required to access them.</p>
+        <p>The app's four files: <code>index.html</code> (the app itself), <code>sw.js</code> (service worker for offline resilience), <code>apple-touch-icon.png<code> (App icon on mobile) and <code>manifest.webmanifest</code> (home screen install). The Apps Script connectors (<code>Code.gs</code> & <code>appsscript.json</code>), the Supabase table script, and this entire guide are all free — no purchase required to access them.</p>
       </div>
     </div>
 
@@ -165,6 +165,18 @@
   <div class="section-label" style="margin-top:56px;">About the Project</div>
 
   <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+        Where does the card data in the template Sheet come from?
+        <span class="faq-q-mark">+</span>
+      </div>
+      <div class="faq-a">
+        <p>The template Sheet comes pre-filled with two example characters — <strong>Spartan MK VII</strong> and <strong>Spartan HAZOP</strong> — plus two armoury weapon items, taken from a publicly available YouTube video published by Mantic Games. These are included purely as worked examples to show you how a complete row looks before you start filling in your own data.</p>
+        <p>All card names, faction assignments, points values, keyword names, and keyword definitions are publicly accessible through Mantic's official free app subscription tier — no purchase required to read them. You fill in your own Sheet using that as your source, which means you're always working from Mantic's own published data rather than anything redistributed here.</p>
+        <p>The template Sheet itself contains only those two example rows. It's a structure demonstration, not a full card database. Adding your full roster is part of the setup — the <a href="setup.html#step-sheet">Sheet guide</a> explains exactly how each column works and how to fill it in.</p>
+      </div>
+    </div>
+
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this.parentElement)">
         Is this affiliated with Mantic Games or 343 Industries?
