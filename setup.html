@@ -305,7 +305,7 @@
           <li>Give it any name (e.g. <code>my-flashpoint-list</code>) and set the visibility to <strong>Private</strong>. See the callout below for why.</li>
           <li>Click <strong>Create repository</strong>.</li>
           <li>Once it's created, click <strong>Add file → Upload files</strong>.</li>
-          <li>Drag all four files from your purchase — <code>index.html</code>, <code>sw.js</code>, <code>manifest.webmanifest</code>, and <code>apple-touch-icon.png</code> — into the upload area. All four must be in the same folder.</li>
+          <li>Drag all five files from your purchase — <code>index.html</code>, <code>sw.js</code>, <code>manifest.webmanifest</code>, <code>apple-touch-icon.png</code>, and <code>wrangler.json</code> — into the upload area. All five must be in the same folder.</li>
           <li>Click <strong>Commit changes</strong> at the bottom.</li>
         </ol>
 
@@ -327,8 +327,8 @@
       </div>
 
       <div class="callout callout-caution">
-        <div class="callout-title">All four files, same folder</div>
-        All four files must be uploaded together in the same folder: <code>index.html</code>, <code>sw.js</code>, <code>manifest.webmanifest</code>, and <code>apple-touch-icon.png</code>. The app works without them, but without these companion files the "Add to Home Screen" install won't show the correct name or icon, and the app won't open full-screen on mobile — particularly on iOS, which requires the <code>apple-touch-icon.png</code> specifically for the home screen icon.
+        <div class="callout-title">All five files, same folder</div>
+        All five files must be uploaded together in the same folder: <code>index.html</code>, <code>sw.js</code>, <code>manifest.webmanifest</code>, <code>apple-touch-icon.png</code>, and <code>wrangler.json</code>. The <code>wrangler.json</code> file tells Cloudflare how to handle the deployment correctly. Without the other companion files, "Add to Home Screen" won't show the correct name or icon and won't open full-screen on mobile — iOS specifically requires <code>apple-touch-icon.png</code> for the home screen icon.
       </div>
 
       <div class="shot">
@@ -339,8 +339,8 @@
 
       <div class="shot">
         <span class="shot-type">Screenshot</span>
-        <div class="shot-label">[ GitHub: upload screen showing all three files ready to commit ]</div>
-        <div class="shot-desc">The drag-and-drop upload screen with index.html, sw.js, manifest.webmanifest, and apple-touch-icon.png all showing in the "added files" list.</div>
+        <div class="shot-label">[ GitHub: upload screen showing all five files ready to commit ]</div>
+        <div class="shot-desc">The drag-and-drop upload screen with index.html, sw.js, manifest.webmanifest, apple-touch-icon.png, and wrangler.json all showing in the "added files" list.</div>
       </div>
 
       <div class="shot">
@@ -349,10 +349,15 @@
         <div class="shot-desc">GIF of the Cloudflare flow: clicking Workers &amp; Pages, Create, Pages, Connect to Git, selecting the GitHub repo, the build settings screen (highlight that nothing needs to change), and clicking Save and Deploy. Stop at the deployment progress screen.</div>
       </div>
 
+      <div class="callout callout-tip">
+        <div class="callout-title">.pages.dev or .workers.dev — both are fine</div>
+        Cloudflare may internally deploy your site as a Worker rather than a Pages site, which is completely normal. Your live URL will end in either <code>.pages.dev</code> or <code>.workers.dev</code> depending on how Cloudflare handles it — there's no functional difference. The <code>wrangler.json</code> file included in your purchase is what ensures Cloudflare picks up the correct configuration either way.
+      </div>
+
       <div class="shot">
         <span class="shot-type">Screenshot</span>
         <div class="shot-label">[ Cloudflare: deployment success — live URL visible ]</div>
-        <div class="shot-desc">The success screen showing the generated .pages.dev URL. You can blur the specific subdomain if you prefer.</div>
+        <div class="shot-desc">The success screen showing your live URL. This will end in either <code>.pages.dev</code> or <code>.workers.dev</code> depending on how Cloudflare handles the deployment internally — both work identically. You can blur the specific subdomain if you prefer.</div>
       </div>
     </div>
 

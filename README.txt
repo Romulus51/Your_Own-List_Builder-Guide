@@ -48,6 +48,12 @@ instructions — this is the map.
       appears. Without it, iOS uses a blurry screenshot instead.
       Same folder as the other files.
 
+  wrangler.json
+      Cloudflare deployment configuration. Tells Cloudflare how
+      to handle this project correctly when deploying from your
+      GitHub repository. Must be in the same folder as the other
+      files. You don't need to edit it.
+
   README.txt
       This file.
 
@@ -69,10 +75,10 @@ setup guide at exactly the step you need them:
   1. Copy the free Google Sheet template
   2. Deploy the free Apps Script connector (Code.gs — free
      download linked from the setup guide at Step 2)
-  3. Upload these four files to a private GitHub repository,
+  3. Upload these five files to a private GitHub repository,
      then deploy through Cloudflare (this step — index.html,
-     sw.js, manifest.webmanifest, and apple-touch-icon.png
-     all in the same folder)
+     sw.js, manifest.webmanifest, apple-touch-icon.png, and
+     wrangler.json all in the same folder)
   4. Open your hosted link and run through the in-app
      setup wizard
   5. Optional: set up Supabase for cloud roster saves
