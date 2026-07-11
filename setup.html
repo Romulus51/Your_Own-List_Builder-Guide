@@ -201,18 +201,31 @@
 
       <h3 style="font-family:var(--font-head); font-size:18px; margin:24px 0 10px; color:var(--text);">The Restrictions column — quick reference</h3>
       <div class="setup-step-body">
-        <p>The Restrictions column in the List tab controls when an item can be added to a roster. Leave it blank if there are no restrictions. Common tokens:</p>
+        <p>The Restrictions column controls when an item can be added to a roster, and for Special Orders, which competitive detachment context they appear in. Leave it blank if there are no restrictions. Multiple tokens are separated by <code>|</code> — all conditions must be true.</p>
+
+        <p><strong>Character &amp; roster conditions</strong> — who must be in the roster for this item to be available:</p>
         <ul>
           <li><code>REQUIRES_CHAR_NAME_INCLUDES:value</code> — roster must include a character whose name contains this text (e.g. <code>REQUIRES_CHAR_NAME_INCLUDES:master chief</code>)</li>
           <li><code>REQUIRES_CHAR_FACTION_INCLUDES:value</code> — roster must include a character of this faction</li>
           <li><code>REQUIRES_CHAR_DETACHMENT_INCLUDES:value</code> — roster must include a character in this detachment</li>
-          <li><code>ALL_CHARS_DETACHMENT:value</code> — every character in the roster must be this detachment (e.g. <code>ALL_CHARS_DETACHMENT:jiralhanae</code>)</li>
+          <li><code>ALL_CHARS_DETACHMENT:value</code> — every character in the roster must be this detachment</li>
           <li><code>ALL_CHARS_FACTION:value</code> — every character must be this faction</li>
+        </ul>
+
+        <p><strong>Special Orders — competitive detachment visibility</strong> — use these instead of the Detachment column for Special Orders. The Detachment column on Special Order rows must stay blank (writing anything there pollutes the browse filter dropdown):</p>
+        <ul>
+          <li><code>ALL_UNITS_ONLY</code> — this Special Order only appears in comp when "All Units" is selected; hidden for specific detachments like ODST or Jiralhanae</li>
+          <li><code>DETACHMENT_ONLY:value</code> — this Special Order only appears in comp for this specific detachment (e.g. <code>DETACHMENT_ONLY:ODST</code>). Use multiple pipe-separated entries to allow more than one detachment: <code>DETACHMENT_ONLY:ODST|DETACHMENT_ONLY:Jiralhanae</code></li>
+        </ul>
+
+        <p><strong>Weapon-slot rules</strong>:</p>
+        <ul>
           <li><code>REQUIRES_WEAPON:value</code> — character must already have this weapon on their base card (used for replacement weapons like combat knives)</li>
           <li><code>BLOCKS_LEGEND</code> — item cannot be equipped by Legend-tier characters</li>
           <li><code>EXEMPT_FROM_WEAPON_LIMIT</code> — item doesn't count against the weapon-per-character cap</li>
         </ul>
-        <p>Combine multiple tokens with a pipe character <code>|</code>. All conditions must be true. The full reference with examples is in the <strong>Restrictions Guide</strong> tab of your Sheet.</p>
+
+        <p>The full reference with worked examples is in the <strong>Restrictions Guide</strong> tab of your Sheet.</p>
       </div>
     </div>
 
@@ -281,7 +294,7 @@
         <span class="setup-step-required req">Required · Paid</span>
       </div>
       <div class="setup-step-body">
-        <p>This is the one paid step. Your purchase gives you a zip file containing the app files: <code>index.html</code> (the app itself), <code>sw.js</code> (the service worker), <code>manifest.webmanifest</code> (the install manifest), and <code>apple-touch-icon.png</code> (the home screen icon on iOS). The connector script and the Supabase table script are both free — you already downloaded them in the steps above. Unzip the purchase to a folder on your computer and you're ready for the next step.</p>
+        <p>This is the one paid step. Your purchase gives you a zip file containing the app files: <code>index.html</code> (the app itself), <code>sw.js</code> (the service worker), <code>manifest.webmanifest</code> (the install manifest), <code>apple-touch-icon.png</code> (the home screen icon on iOS), and <code>wrangler.json</code> (the Cloudflare deployment config). The connector script and the Supabase table script are both free — you already downloaded them in the steps above. Unzip the purchase to a folder on your computer and you're ready for the next step.</p>
         <div class="hero-actions" style="justify-content:flex-start;">
           <a href="#" class="btn btn-primary">Get the App on Itch.io</a>
         </div>
