@@ -278,7 +278,7 @@ body::before{
   max-height:0; overflow:hidden; transition:max-height .25s ease, padding .25s ease;
   font-size:14px; color:var(--text2); padding:0 22px;
 }
-.faq-item.open .faq-a{max-height:600px; padding:0 22px 20px;}
+.faq-item.open .faq-a{max-height:2000px; padding:0 22px 20px;}
 .faq-a p{margin:0 0 10px;}
 .faq-a p:last-child{margin-bottom:0;}
 
