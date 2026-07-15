@@ -93,13 +93,14 @@
           <li>Rename it whatever you like — the name doesn't matter to the app.</li>
         </ol>
         <div class="hero-actions" style="justify-content:flex-start; margin-bottom:20px;">
-          <a href="https://docs.google.com/spreadsheets/d/199XxshfMItEz0bYHA0VPKUuvrL6JA6kxGmnOXCkIt3k/edit?usp=drive_link" target="_blank" class="btn btn-primary">Open the Free Sheet Template</a>
+          <a href="https://docs.google.com/spreadsheets/d/199XxshfMItEz0bYHA0VPKUuvrL6JA6kxGmnOXCkIt3k/edit?usp=drivesdk" target="_blank" class="btn btn-primary">Open the Free Sheet Template</a>
         </div>
       </div>
       <div class="shot">
-        <span class="shot-type">GIF</span>
-        <div class="shot-label">[ Screen recording: opening the template → File → Make a copy → saved to Drive ]</div>
-        <div class="shot-desc">Short GIF (15–20 sec): open the Sheet, click File, hover over Make a copy, fill in a name, click OK, and show the new copy open in the user's own Drive with their Google account visible in the top-right corner.</div>
+        <!-- Replace with: <video src="Folder/Setup_Sheet_Copy.mp4" autoplay loop muted playsinline style="width:100%; border-radius:6px;"></video> -->
+        <span class="shot-type">MP4 NEEDED</span>
+        <div class="shot-label">Folder/Setup_Sheet_Copy.mp4</div>
+        <div class="shot-desc">Screen recording: open the Sheet template → File → Make a copy → rename → confirm saved to Drive. 15–20 sec.</div>
       </div>
       <div class="callout callout-tip">
         <div class="callout-title">What you'll see when you open it</div>
@@ -231,12 +232,9 @@
         <span class="setup-step-required req">Required · ~5 min</span>
       </div>
       <div class="setup-step-body">
-        <p>Apps Script is a small free Google service that connects your Sheet to the app. Think of it as a messenger: the app asks it "give me the card data from this Sheet," it reads the Sheet and sends the data back. You'll paste in a ready-made script and deploy it — no coding involved.</p>
+        <p>Apps Script is a small free Google service that connects your Sheet to the app. Think of it as a messenger: the app asks it "give me the card data from this Sheet," it reads the Sheet and sends the data back. The connector script (<code>Code.gs</code>) is already included inside your copied Google Sheet — you don't need to download or paste anything for that part.</p>
         <ol>
-          <li>In your copied Sheet, go to <strong>Extensions → Apps Script</strong>. A new tab will open with a code editor.</li>
-          <li>You'll see a small amount of starter code already there. Select all of it and delete it.</li>
-          <li>Open <code>Code.gs</code> using the free link below, copy the entire contents, and paste it into the editor.</li>
-          <li>Click the floppy disk icon (or press <strong>Ctrl+S</strong>) to save.</li>
+          <li>In your copied Sheet, go to <strong>Extensions → Apps Script</strong>. A new tab will open with a code editor. The script is already there — don't delete or edit it.</li>
           <li>Click <strong>Deploy → New deployment</strong>.</li>
           <li>Next to "Select type," click the gear icon and choose <strong>Web app</strong>.</li>
           <li>Set <strong>Execute as</strong> to <strong>Me</strong>, and <strong>Who has access</strong> to <strong>Anyone</strong>.</li>
@@ -245,11 +243,45 @@
         </ol>
       </div>
 
-      <div class="hero-actions" style="justify-content:flex-start; margin-bottom:8px;">
-        <a href="https://raw.githubusercontent.com/romulus51/Halo_Flashpoint-List_Builder-Guide/main/files/Code.gs" target="_blank" class="btn btn-primary">Download Code.gs — Free</a>
-        <a href="https://raw.githubusercontent.com/romulus51/Halo_Flashpoint-List_Builder-Guide/main/files/appsscript.json" target="_blank" class="btn btn-ghost">Download appsscript.json</a>
+      <div class="callout callout-tip">
+        <div class="callout-title">Optional: pre-configure script permissions with appsscript.json</div>
+        Copying the <code>appsscript.json</code> manifest into your Apps Script project before deploying sets the correct OAuth scopes in advance, which makes the authorisation step smoother and avoids unexpected permission prompts. To use it: in the Apps Script editor, go to <strong>Project Settings → Show "appsscript.json" manifest file in editor</strong>, then replace the file's contents by pasting the text below. Click the button to copy it to your clipboard.
       </div>
-      <p style="font-size:13px; color:var(--text3); margin-bottom:24px;"><code>appsscript.json</code> is optional — it pre-configures the script's permissions so the authorisation step is smoother. To use it: in the Apps Script editor, go to <strong>Project Settings → Show "appsscript.json" manifest file in editor</strong>, then replace the file's contents with the downloaded version before deploying.</p>
+
+      <div style="margin-bottom:24px;">
+        <button onclick="copyAppsScriptJson(this)" class="btn btn-ghost" style="margin-bottom:8px;">Copy appsscript.json to Clipboard</button>
+        <p style="font-size:13px; color:var(--text3); margin:0;">Paste this into the <code>appsscript.json</code> file in your Apps Script editor, replacing all existing content.</p>
+      </div>
+
+      <script>
+      function copyAppsScriptJson(btn) {
+        var json = '{
+  "timeZone": "America/New_York",
+  "dependencies": {},
+  "exceptionLogging": "STACKDRIVER",
+  "runtimeVersion": "V8",
+  "oauthScopes": [
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/drive.readonly",
+    "https://www.googleapis.com/auth/script.external_request"
+  ],
+  "webapp": {
+    "executeAs": "USER_DEPLOYING",
+    "access": "ANYONE_ANONYMOUS"
+  }
+}';
+        navigator.clipboard.writeText(json).then(function() {
+          btn.textContent = '✓ Copied!';
+          btn.style.color = 'var(--ok)';
+          btn.style.borderColor = 'var(--ok)';
+          setTimeout(function() {
+            btn.textContent = 'Copy appsscript.json to Clipboard';
+            btn.style.color = '';
+            btn.style.borderColor = '';
+          }, 2500);
+        });
+      }
+      </script>
 
       <div class="callout callout-caution">
         <div class="callout-title">The "Anyone" setting — and why it's safe</div>
@@ -257,21 +289,24 @@
       </div>
 
       <div class="shot">
-        <span class="shot-type">GIF</span>
-        <div class="shot-label">[ Screen recording: Extensions → Apps Script → paste code → save → Deploy → New deployment ]</div>
-        <div class="shot-desc">GIF showing: clicking Extensions → Apps Script, the editor opening, select-all and delete of starter code, paste of the new code, save, then Deploy → New deployment, the type selector with Web app chosen, the two dropdowns set correctly, and the Deploy button clicked. Stop before the authorisation step — that varies by account and is hard to capture cleanly.</div>
+        <!-- Replace with: <video src="Folder/Setup_AppsScript_Deploy.mp4" autoplay loop muted playsinline style="width:100%; border-radius:6px;"></video> -->
+        <span class="shot-type">MP4 NEEDED</span>
+        <div class="shot-label">Folder/Setup_AppsScript_Deploy.mp4</div>
+        <div class="shot-desc">Screen recording: Extensions → Apps Script → verify script is present → Deploy → New deployment → Web app → settings → Deploy button. Stop before authorisation.</div>
       </div>
 
       <div class="shot">
-        <span class="shot-type">Screenshot</span>
-        <div class="shot-label">[ New deployment modal — Web app type selected, Execute as Me, Who has access Anyone ]</div>
-        <div class="shot-desc">The deployment dialog with all three settings circled or highlighted: type = Web app, Execute as = Me, Who has access = Anyone. This is the frame people will refer back to most.</div>
+        <!-- Replace with: <img src="Folder/Setup_AppsScript_Modal.png" alt="Apps Script deployment modal settings" style="width:100%; border-radius:6px;"> -->
+        <span class="shot-type">PNG NEEDED</span>
+        <div class="shot-label">Folder/Setup_AppsScript_Modal.png</div>
+        <div class="shot-desc">Screenshot: the New deployment modal with Web app selected, Execute as = Me, Who has access = Anyone. Circle or highlight all three settings.</div>
       </div>
 
       <div class="shot">
-        <span class="shot-type">Screenshot</span>
-        <div class="shot-label">[ Deployment success screen — Web app URL visible ]</div>
-        <div class="shot-desc">The confirmation screen after deploying, with the Web app URL ending in /exec visible. Blur your actual URL in the screenshot — use a placeholder string instead.</div>
+        <!-- Replace with: <img src="Folder/Setup_AppsScript_URL.png" alt="Apps Script deployment success URL" style="width:100%; border-radius:6px;"> -->
+        <span class="shot-type">PNG NEEDED</span>
+        <div class="shot-label">Folder/Setup_AppsScript_URL.png</div>
+        <div class="shot-desc">Screenshot: deployment success screen with the Web app URL ending in /exec. Blur the actual URL.</div>
       </div>
 
       <div class="callout callout-caution">
@@ -339,21 +374,24 @@
       </div>
 
       <div class="shot">
-        <span class="shot-type">Screenshot</span>
-        <div class="shot-label">[ GitHub: New repository creation — name entered, Private selected ]</div>
-        <div class="shot-desc">The Create a new repository page with a repo name typed in and Private selected. Circle the Private radio button.</div>
+        <!-- Replace with: <img src="Folder/Setup_GitHub_NewRepo.png" alt="GitHub new repository creation" style="width:100%; border-radius:6px;"> -->
+        <span class="shot-type">PNG NEEDED</span>
+        <div class="shot-label">Folder/Setup_GitHub_NewRepo.png</div>
+        <div class="shot-desc">Screenshot: GitHub new repository page with a name entered and Private selected. Circle the Private radio button.</div>
       </div>
 
       <div class="shot">
-        <span class="shot-type">Screenshot</span>
-        <div class="shot-label">[ GitHub: upload screen showing all five files ready to commit ]</div>
-        <div class="shot-desc">The drag-and-drop upload screen with index.html, sw.js, manifest.webmanifest, apple-touch-icon.png, and wrangler.json all showing in the "added files" list.</div>
+        <!-- Replace with: <img src="Folder/Setup_GitHub_Upload.png" alt="GitHub upload all five files" style="width:100%; border-radius:6px;"> -->
+        <span class="shot-type">PNG NEEDED</span>
+        <div class="shot-label">Folder/Setup_GitHub_Upload.png</div>
+        <div class="shot-desc">Screenshot: GitHub upload screen showing index.html, sw.js, manifest.webmanifest, apple-touch-icon.png, and wrangler.json all in the added files list.</div>
       </div>
 
       <div class="shot">
-        <span class="shot-type">GIF</span>
-        <div class="shot-label">[ Screen recording: Cloudflare Workers &amp; Pages → Connect to Git → select repo → deploy ]</div>
-        <div class="shot-desc">GIF of the Cloudflare flow: clicking Workers &amp; Pages, Create, Pages, Connect to Git, selecting the GitHub repo, the build settings screen (highlight that nothing needs to change), and clicking Save and Deploy. Stop at the deployment progress screen.</div>
+        <!-- Replace with: <video src="Folder/Setup_Cloudflare_Deploy.mp4" autoplay loop muted playsinline style="width:100%; border-radius:6px;"></video> -->
+        <span class="shot-type">MP4 NEEDED</span>
+        <div class="shot-label">Folder/Setup_Cloudflare_Deploy.mp4</div>
+        <div class="shot-desc">Screen recording: Cloudflare dashboard → Workers & Pages → Create → Pages → Connect to Git → select repo → build settings (leave default) → Save and Deploy. Stop at the progress screen.</div>
       </div>
 
       <div class="callout callout-tip">
@@ -362,9 +400,10 @@
       </div>
 
       <div class="shot">
-        <span class="shot-type">Screenshot</span>
-        <div class="shot-label">[ Cloudflare: deployment success — live URL visible ]</div>
-        <div class="shot-desc">The success screen showing your live URL. This will end in either <code>.pages.dev</code> or <code>.workers.dev</code> depending on how Cloudflare handles the deployment internally — both work identically. You can blur the specific subdomain if you prefer.</div>
+        <!-- Replace with: <img src="Folder/Setup_Cloudflare_URL.png" alt="Cloudflare deployment success URL" style="width:100%; border-radius:6px;"> -->
+        <span class="shot-type">PNG NEEDED</span>
+        <div class="shot-label">Folder/Setup_Cloudflare_URL.png</div>
+        <div class="shot-desc">Screenshot: Cloudflare deployment success screen showing the live .pages.dev or .workers.dev URL. Blur the subdomain if preferred.</div>
       </div>
     </div>
 
@@ -386,9 +425,10 @@
       </div>
 
       <div class="shot">
-        <span class="shot-type">GIF</span>
-        <div class="shot-label">[ Screen recording: in-app wizard — paste URL → Test Connection → green success → Save &amp; Continue → app loads ]</div>
-        <div class="shot-desc">GIF showing: the setup wizard open, paste into the URL field, click Test Connection, the green "Connected — found X rows" result appearing, then Save &amp; Continue, and the app loading its Browse panel with cards visible. This is the most satisfying moment in the setup flow — make it visible.</div>
+        <!-- Replace with: <video src="Folder/Setup_Wizard_Connect.mp4" autoplay loop muted playsinline style="width:100%; border-radius:6px;"></video> -->
+        <span class="shot-type">MP4 NEEDED</span>
+        <div class="shot-label">Folder/Setup_Wizard_Connect.mp4</div>
+        <div class="shot-desc">Screen recording: in-app wizard → paste URL → Test Connection → green "Connected — found X rows" → Save & Continue → Browse panel loads with cards. The payoff moment.</div>
       </div>
 
       <div class="callout callout-caution">
@@ -427,15 +467,17 @@
       </div>
 
       <div class="shot">
-        <span class="shot-type">Screenshot</span>
-        <div class="shot-label">[ Supabase SQL Editor — setup script pasted and run successfully ]</div>
-        <div class="shot-desc">The SQL Editor with the table-creation script pasted in, and the green "Success. No rows returned" confirmation below it after clicking Run.</div>
+        <!-- Replace with: <img src="Folder/Setup_Supabase_SQL.png" alt="Supabase SQL editor run success" style="width:100%; border-radius:6px;"> -->
+        <span class="shot-type">PNG NEEDED</span>
+        <div class="shot-label">Folder/Setup_Supabase_SQL.png</div>
+        <div class="shot-desc">Screenshot: Supabase SQL Editor with the setup script pasted and the green "Success. No rows returned" confirmation visible.</div>
       </div>
 
       <div class="shot">
-        <span class="shot-type">Screenshot</span>
-        <div class="shot-label">[ Supabase Project Settings → API — Project URL and anon key visible ]</div>
-        <div class="shot-desc">The API settings page showing both fields. Blur or replace the actual values with placeholders.</div>
+        <!-- Replace with: <img src="Folder/Setup_Supabase_Keys.png" alt="Supabase project URL and anon key" style="width:100%; border-radius:6px;"> -->
+        <span class="shot-type">PNG NEEDED</span>
+        <div class="shot-label">Folder/Setup_Supabase_Keys.png</div>
+        <div class="shot-desc">Screenshot: Supabase Project Settings → API page showing Project URL and anon public key. Blur the actual values.</div>
       </div>
 
       <div class="callout callout-tip">
@@ -457,9 +499,10 @@
       </div>
 
       <div class="shot">
-        <span class="shot-type">Screenshot</span>
-        <div class="shot-label">[ Health Check modal — clean result, zero errors ]</div>
-        <div class="shot-desc">The Health Check results panel showing 0 errors, 0 warnings, and a green all-clear state.</div>
+        <!-- Replace with: <img src="Folder/Setup_HealthCheck.png" alt="Health Check clean result" style="width:100%; border-radius:6px;"> -->
+        <span class="shot-type">PNG NEEDED</span>
+        <div class="shot-label">Folder/Setup_HealthCheck.png</div>
+        <div class="shot-desc">Screenshot: Health Check results panel showing 0 errors, 0 warnings, green all-clear state.</div>
       </div>
 
       <div class="callout callout-tip">
@@ -487,14 +530,16 @@
         </ol>
       </div>
       <div class="shot">
-        <span class="shot-type">Screenshot</span>
-        <div class="shot-label">[ iPhone: Safari share sheet with "Add to Home Screen" visible ]</div>
-        <div class="shot-desc">The iOS share sheet open in Safari, scrolled to show the "Add to Home Screen" option highlighted.</div>
+        <!-- Replace with: <img src="Folder/Setup_iOS_ShareSheet.png" alt="iOS Safari share sheet Add to Home Screen" style="width:100%; border-radius:6px;"> -->
+        <span class="shot-type">PNG NEEDED</span>
+        <div class="shot-label">Folder/Setup_iOS_ShareSheet.png</div>
+        <div class="shot-desc">Screenshot: iOS Safari share sheet scrolled to show "Add to Home Screen" highlighted.</div>
       </div>
       <div class="shot">
-        <span class="shot-type">Screenshot</span>
-        <div class="shot-label">[ iPhone home screen showing the app icon installed ]</div>
-        <div class="shot-desc">The iOS home screen with the list builder icon visible among other apps, showing it installed correctly with the right name and icon.</div>
+        <!-- Replace with: <img src="Folder/Setup_iOS_HomeScreen.png" alt="App installed on iPhone home screen" style="width:100%; border-radius:6px;"> -->
+        <span class="shot-type">PNG NEEDED</span>
+        <div class="shot-label">Folder/Setup_iOS_HomeScreen.png</div>
+        <div class="shot-desc">Screenshot: iPhone home screen with the list builder icon installed correctly, showing the right name and icon.</div>
       </div>
       <div class="callout callout-caution">
         <div class="callout-title">Must be Safari — not Chrome or Firefox</div>
