@@ -30,3 +30,33 @@ document.addEventListener('DOMContentLoaded', function(){
 
   steps.forEach(function(step){ observer.observe(step); });
 });
+
+// Video tap-to-pause / tap-to-resume
+// Works for all <video> elements on any page — no per-element onclick needed.
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('video').forEach(function(video){
+    // Wrap the video in a relative-positioned container so the overlay can sit on top
+    var wrapper = document.createElement('div');
+    wrapper.className = 'video-wrapper';
+    video.parentNode.insertBefore(wrapper, video);
+    wrapper.appendChild(video);
+
+    // Overlay — hidden while playing, shows play icon when paused
+    var overlay = document.createElement('div');
+    overlay.className = 'video-overlay';
+    overlay.innerHTML = '<div class="video-overlay-icon">&#9654;</div>';
+    wrapper.appendChild(overlay);
+
+    wrapper.addEventListener('click', function(){
+      if(video.paused){
+        video.play();
+      } else {
+        video.pause();
+      }
+    });
+
+    // Keep overlay in sync with actual play/pause state
+    video.addEventListener('pause', function(){ overlay.classList.add('visible'); });
+    video.addEventListener('play',  function(){ overlay.classList.remove('visible'); });
+  });
+});

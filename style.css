@@ -305,6 +305,33 @@ body::before{
 .feature-block ul{padding-left:20px; color:var(--text2); margin:0;}
 .feature-block li{margin-bottom:6px;}
 
+
+/* ── Video tap-to-pause overlay ── */
+.video-wrapper{
+  position:relative; display:block; cursor:pointer;
+  border-radius:6px; overflow:hidden; line-height:0;
+}
+.video-wrapper video{
+  width:100%; display:block; border-radius:6px;
+}
+.video-overlay{
+  position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  background:rgba(0,0,0,.35);
+  opacity:0; transition:opacity .18s ease;
+  pointer-events:none;
+}
+.video-overlay.visible{opacity:1;}
+.video-overlay-icon{
+  width:56px; height:56px; border-radius:50%;
+  background:rgba(0,0,0,.6); border:2px solid rgba(255,255,255,.7);
+  display:flex; align-items:center; justify-content:center;
+  font-size:22px; color:#fff; padding-left:4px;
+}
+/* Subtle hover hint even while playing */
+.video-wrapper:hover .video-overlay{opacity:.35;}
+.video-wrapper:hover .video-overlay.visible{opacity:1;}
+
 /* ── Footer ── */
 .site-footer{
   border-top:1px solid var(--border); padding:40px 24px;
