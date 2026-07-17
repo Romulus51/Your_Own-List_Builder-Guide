@@ -97,7 +97,10 @@
         </div>
       </div>
       <div class="shot">
-        <video src="Folder/Setup_Sheet_Copy.mp4" autoplay loop muted playsinline style="width:100%; border-radius:6px;"></video>
+        <!-- Replace with: <video src="Folder/Setup_Sheet_Copy.mp4" autoplay loop muted playsinline style="width:100%; border-radius:6px;"></video> -->
+        <span class="shot-type">MP4 NEEDED</span>
+        <div class="shot-label">Folder/Setup_Sheet_Copy.mp4</div>
+        <div class="shot-desc">Screen recording: open the Sheet template → File → Make a copy → rename → confirm saved to Drive. 15–20 sec.</div>
       </div>
       <div class="callout callout-tip">
         <div class="callout-title">What you'll see when you open it</div>
@@ -303,15 +306,24 @@
       </div>
 
       <div class="shot">
-        <video src="Folder/Setup_AppsScript_Deploy.mp4" autoplay loop muted playsinline style="width:100%; border-radius:6px;"></video>
+        <!-- Replace with: <video src="Folder/Setup_AppsScript_Deploy.mp4" autoplay loop muted playsinline style="width:100%; border-radius:6px;"></video> -->
+        <span class="shot-type">MP4 NEEDED</span>
+        <div class="shot-label">Folder/Setup_AppsScript_Deploy.mp4</div>
+        <div class="shot-desc">Screen recording: Extensions → Apps Script → verify script is present → Deploy → New deployment → Web app → settings → Deploy button. Stop before authorisation.</div>
       </div>
 
       <div class="shot">
-        <img src="Folder/Setup_AppsScript_Modal.png" alt="Setup_AppsScript_Modal">
+        <!-- Replace with: <img src="Folder/Setup_AppsScript_Modal.png" alt="Apps Script deployment modal settings" style="width:100%; border-radius:6px;"> -->
+        <span class="shot-type">PNG NEEDED</span>
+        <div class="shot-label">Folder/Setup_AppsScript_Modal.png</div>
+        <div class="shot-desc">Screenshot: the New deployment modal with Web app selected, Execute as = Me, Who has access = Anyone. Circle or highlight all three settings.</div>
       </div>
 
       <div class="shot">
-        <video src="Folder/Setup_AppsScript_URL.mp4" autoplay loop muted playsinline style="width:100%; border-radius:6px;"></video>
+        <!-- Replace with: <img src="Folder/Setup_AppsScript_URL.png" alt="Apps Script deployment success URL" style="width:100%; border-radius:6px;"> -->
+        <span class="shot-type">PNG NEEDED</span>
+        <div class="shot-label">Folder/Setup_AppsScript_URL.png</div>
+        <div class="shot-desc">Screenshot: deployment success screen with the Web app URL ending in /exec. Blur the actual URL.</div>
       </div>
 
       <div class="callout callout-caution">
@@ -379,15 +391,24 @@
       </div>
 
       <div class="shot">
-        <video src="Folder/Setup_GitHub_NewRepo.mp4" autoplay loop muted playsinline style="width:100%; border-radius:6px;"></video>
+        <!-- Replace with: <img src="Folder/Setup_GitHub_NewRepo.png" alt="GitHub new repository creation" style="width:100%; border-radius:6px;"> -->
+        <span class="shot-type">PNG NEEDED</span>
+        <div class="shot-label">Folder/Setup_GitHub_NewRepo.png</div>
+        <div class="shot-desc">Screenshot: GitHub new repository page with a name entered and Private selected. Circle the Private radio button.</div>
       </div>
 
       <div class="shot">
-        <video src="Folder/Setup_GitHub_Upload.mp4" autoplay loop muted playsinline style="width:100%; border-radius:6px;"></video>
+        <!-- Replace with: <img src="Folder/Setup_GitHub_Upload.png" alt="GitHub upload all five files" style="width:100%; border-radius:6px;"> -->
+        <span class="shot-type">PNG NEEDED</span>
+        <div class="shot-label">Folder/Setup_GitHub_Upload.png</div>
+        <div class="shot-desc">Screenshot: GitHub upload screen showing index.html, sw.js, manifest.webmanifest, apple-touch-icon.png, and wrangler.json all in the added files list.</div>
       </div>
 
       <div class="shot">
-        <video src="Folder/Setup_Cloudflare_Deploy.mp4" autoplay loop muted playsinline style="width:100%; border-radius:6px;"></video>
+        <!-- Replace with: <video src="Folder/Setup_Cloudflare_Deploy.mp4" autoplay loop muted playsinline style="width:100%; border-radius:6px;"></video> -->
+        <span class="shot-type">MP4 NEEDED</span>
+        <div class="shot-label">Folder/Setup_Cloudflare_Deploy.mp4</div>
+        <div class="shot-desc">Screen recording: Cloudflare dashboard → Workers & Pages → Create → Pages → Connect to Git → select repo → build settings (leave default) → Save and Deploy. Stop at the progress screen.</div>
       </div>
 
       <div class="callout callout-tip">
@@ -396,7 +417,10 @@
       </div>
 
       <div class="shot">
-        <img src="Folder/Setup_Cloudflare_URL.png" alt="Setup_Cloudflare_URL">
+        <!-- Replace with: <img src="Folder/Setup_Cloudflare_URL.png" alt="Cloudflare deployment success URL" style="width:100%; border-radius:6px;"> -->
+        <span class="shot-type">PNG NEEDED</span>
+        <div class="shot-label">Folder/Setup_Cloudflare_URL.png</div>
+        <div class="shot-desc">Screenshot: Cloudflare deployment success screen showing the live .pages.dev or .workers.dev URL. Blur the subdomain if preferred.</div>
       </div>
     </div>
 
@@ -408,13 +432,23 @@
         <span class="setup-step-required req">Required · ~2 min</span>
       </div>
       <div class="setup-step-body">
-        <p>Open your new live URL from Step 4. Because it's a fresh copy with no connection configured yet, the app shows a setup screen before anything else. This is where you paste in the Apps Script URL from Step 2 and test the connection.</p>
-        <ol>
-          <li>Paste the Web app URL you saved at the end of Step 2 into the input field.</li>
-          <li>Click <strong>Test Connection</strong>. If everything is connected correctly, you'll see a green confirmation showing how many rows of card data it found in your Sheet.</li>
-          <li>Click <strong>Save &amp; Continue</strong>.</li>
-        </ol>
-        <p>The app is now connected to your Sheet. From here, anything you add or edit in the Sheet will appear in the app after a page refresh.</p>
+        <p>Open your new live URL from Step 4. Because it's a fresh copy with no connection configured yet, the app shows a three-step setup screen before anything else.</p>
+
+        <p><strong>Step 1 — Validate your itch.io download key</strong></p>
+        <p>Paste your download key from your itch.io purchase and click <strong>Validate Key</strong>. Once validated, the key is saved to your device and you won't be asked again.</p>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">Where to find your itch.io key</div>
+          Your download key is available in two places after purchase. First, the <strong>purchase confirmation email</strong> — itch.io sends it automatically to the email used at checkout. Look for a link in the format <code>https://itch.io/download/...</code> — the long string at the end of that URL is your key. Second, your <strong>itch.io library</strong> — log into your itch.io account, go to Library, find this tool, and click Download. Your key will be shown on that page. Copy the full key string and paste it into Step 1 of the setup screen.
+        </div>
+
+        <p><strong>Step 2 — Connect your Google Sheet</strong></p>
+        <p>Paste the Web app URL you saved at the end of Step 2 and click <strong>Test Connection</strong>. If everything is connected correctly, you'll see a green confirmation showing how many rows of card data it found in your Sheet. Once confirmed, this URL is also saved permanently to your device.</p>
+
+        <p><strong>Step 3 — Cloud roster saves via Supabase (optional)</strong></p>
+        <p>Paste your Supabase project URL and anon key if you want to save and load rosters across multiple devices. This can be skipped entirely and added later at any time from <strong>Settings → Edit Connections</strong>.</p>
+
+        <p>Once Steps 1 and 2 are complete, click <strong>Save &amp; Continue</strong> to enter the app.</p>
       </div>
 
       <div class="shot">
@@ -454,7 +488,8 @@
 
       <div class="setup-step-body">
         <ol start="6">
-          <li>Go to <strong>Project Settings → API</strong>. Copy the <strong>Project URL</strong> and the <strong>anon public</strong> key (not the service_role key).</li>
+          <li>Go to <strong>Project Settings → Data API</strong> to find your <strong>Project URL</strong>. Copy only the base URL — it ends in <code>.supabase.co</code>. Delete anything that comes after that (such as <code>/rest/v1/</code>) before pasting it into the app.</li>
+          <li>Go to <strong>Project Settings → API Keys</strong> to find your <strong>anon public</strong> key. Copy that key (not the service_role key).</li>
           <li>Back in the app, open <strong>Settings → Edit Connections</strong>, paste both values into the Supabase fields, and click <strong>Test Connection</strong>.</li>
         </ol>
       </div>
@@ -470,7 +505,7 @@
         <!-- Replace with: <img src="Folder/Setup_Supabase_Keys.png" alt="Supabase project URL and anon key" style="width:100%; border-radius:6px;"> -->
         <span class="shot-type">PNG NEEDED</span>
         <div class="shot-label">Folder/Setup_Supabase_Keys.png</div>
-        <div class="shot-desc">Screenshot: Supabase Project Settings → API page showing Project URL and anon public key. Blur the actual values.</div>
+        <div class="shot-desc">Screenshot: two side-by-side or stacked captures — Supabase Project Settings → Data API (showing Project URL) and Project Settings → API Keys (showing anon public key). Blur the actual values.</div>
       </div>
 
       <div class="callout callout-tip">
@@ -523,13 +558,16 @@
         </ol>
       </div>
       <div class="shot">
-        <img src="Folder/Setup_iOS_ShareSheet1.png" alt="iOS_ShareScreen">
+        <!-- Replace with: <img src="Folder/Setup_iOS_ShareSheet.png" alt="iOS Safari share sheet Add to Home Screen" style="width:100%; border-radius:6px;"> -->
+        <span class="shot-type">PNG NEEDED</span>
+        <div class="shot-label">Folder/Setup_iOS_ShareSheet.png</div>
+        <div class="shot-desc">Screenshot: iOS Safari share sheet scrolled to show "Add to Home Screen" highlighted.</div>
       </div>
       <div class="shot">
-        <img src="Folder/Setup_iOS_ShareSheet2.png" alt="iOS_ShareScreen">
-      </div>
-      <div class="shot">
-        <img src="Folder/iOS_Background.jpg" alt="iOS_HomeScreen">
+        <!-- Replace with: <img src="Folder/Setup_iOS_HomeScreen.png" alt="App installed on iPhone home screen" style="width:100%; border-radius:6px;"> -->
+        <span class="shot-type">PNG NEEDED</span>
+        <div class="shot-label">Folder/Setup_iOS_HomeScreen.png</div>
+        <div class="shot-desc">Screenshot: iPhone home screen with the list builder icon installed correctly, showing the right name and icon.</div>
       </div>
       <div class="callout callout-caution">
         <div class="callout-title">Must be Safari — not Chrome or Firefox</div>
