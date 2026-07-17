@@ -454,13 +454,68 @@
           <li>Click <strong>New project</strong>. Give it a name, set a database password (store it somewhere — you won't need it often, but Supabase requires it), and choose the region closest to you.</li>
           <li>Wait for the project to finish initialising (usually 1–2 minutes).</li>
           <li>Go to the <strong>SQL Editor</strong> tab in your project dashboard.</li>
-          <li>Download the free <code>supabase-setup.sql</code> file using the link below, copy its contents, and paste it into the editor. Click <strong>Run</strong>. This creates the single table the app needs to save rosters.</li>
+          <li>Copy the <code>supabase-setup.sql</code> script using the button below and paste it into the SQL Editor. Click <strong>Run</strong>. This creates the single table the app needs to save rosters.</li>
         </ol>
       </div>
 
-      <div class="hero-actions" style="justify-content:flex-start; margin-bottom:24px;">
-        <a href="https://raw.githubusercontent.com/romulus51/Halo_Flashpoint-List_Builder-Guide/main/files/supabase-setup.sql" target="_blank" class="btn btn-ghost">Download supabase-setup.sql — Free</a>
+      <div style="margin-bottom:24px;">
+        <button onclick="copySupabaseSQL(this)" class="btn btn-ghost" style="margin-bottom:8px;">Copy supabase-setup.sql to Clipboard</button>
+        <p style="font-size:13px; color:var(--text3); margin:0;">Paste this into the Supabase SQL Editor and click Run.</p>
       </div>
+
+      <script>
+      function copySupabaseSQL(btn) {
+        var sql = 'create table rosters (
+  id uuid default gen_random_uuid() primary key,
+  name text not null,
+  created_at timestamptz default now(),
+  roster_data jsonb not null
+);
+alter table rosters enable row level security;
+create policy "Public" on rosters for all using (true) with check (true);';
+
+        function showCopied() {
+          btn.textContent = '✓ Copied!';
+          btn.style.color = 'var(--ok)';
+          btn.style.borderColor = 'var(--ok)';
+          setTimeout(function() {
+            btn.textContent = 'Copy supabase-setup.sql to Clipboard';
+            btn.style.color = '';
+            btn.style.borderColor = '';
+          }, 2500);
+        }
+
+        function showFailed() {
+          btn.textContent = 'Copy failed — try again';
+          btn.style.color = 'var(--caution)';
+          btn.style.borderColor = 'var(--caution)';
+          setTimeout(function() {
+            btn.textContent = 'Copy supabase-setup.sql to Clipboard';
+            btn.style.color = '';
+            btn.style.borderColor = '';
+          }, 2500);
+        }
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(sql).then(showCopied).catch(showFailed);
+        } else {
+          try {
+            var ta = document.createElement('textarea');
+            ta.value = sql;
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.focus();
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            showCopied();
+          } catch(e) {
+            showFailed();
+          }
+        }
+      }
+      </script>
 
       <div class="setup-step-body">
         <ol start="6">
