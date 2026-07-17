@@ -462,14 +462,16 @@
 
       <script>
       function copySupabaseSQL(btn) {
-        var sql = 'create table rosters (
-  id uuid default gen_random_uuid() primary key,
-  name text not null,
-  created_at timestamptz default now(),
-  roster_data jsonb not null
-);
-alter table rosters enable row level security;
-create policy "Public" on rosters for all using (true) with check (true);';
+        var sql = [
+          'create table rosters (',
+          '  id uuid default gen_random_uuid() primary key,',
+          '  name text not null,',
+          '  created_at timestamptz default now(),',
+          '  roster_data jsonb not null',
+          ');',
+          'alter table rosters enable row level security;',
+          'create policy "Public" on rosters for all using (true) with check (true);'
+        ].join('\n');
 
         function showCopied() {
           btn.textContent = '✓ Copied!';
