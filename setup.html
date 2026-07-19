@@ -72,7 +72,7 @@
       <li><a href="#step-5"><span class="step-rail-num">05</span> First-Run Wizard</a></li>
       <li><a href="#step-6"><span class="step-rail-num">06</span> Supabase (optional)</a></li>
       <li><a href="#step-7"><span class="step-rail-num">07</span> Health Check</a></li>
-      <li><a href="#step-pwa"><span class="step-rail-num">⊕</span> iOS Home Screen</a></li>
+      <li><a href="#step-pwa"><span class="step-rail-num">⊕</span> Install on Mobile</a></li>
     </ol>
   </nav>
 
@@ -428,7 +428,10 @@
       </div>
 
       <div class="shot">
-        <video src="Folder/Setup_Wizard_Connect.mp4" autoplay loop muted playsinline style="width:100%; border-radius:6px;"></video>
+        <!-- Replace with: <video src="Folder/Setup_Wizard_Connect.mp4" autoplay loop muted playsinline style="width:100%; border-radius:6px;"></video> -->
+        <span class="shot-type">MP4 NEEDED</span>
+        <div class="shot-label">Folder/Setup_Wizard_Connect.mp4</div>
+        <div class="shot-desc">Screen recording: in-app wizard → paste URL → Test Connection → green "Connected — found X rows" → Save & Continue → Browse panel loads with cards. The payoff moment.</div>
       </div>
 
       <div class="callout callout-caution">
@@ -462,16 +465,14 @@
 
       <script>
       function copySupabaseSQL(btn) {
-        var sql = [
-          'create table rosters (',
-          '  id uuid default gen_random_uuid() primary key,',
-          '  name text not null,',
-          '  created_at timestamptz default now(),',
-          '  roster_data jsonb not null',
-          ');',
-          'alter table rosters enable row level security;',
-          'create policy "Public" on rosters for all using (true) with check (true);'
-        ].join('\n');
+        var sql = 'create table rosters (
+  id uuid default gen_random_uuid() primary key,
+  name text not null,
+  created_at timestamptz default now(),
+  roster_data jsonb not null
+);
+alter table rosters enable row level security;
+create policy "Public" on rosters for all using (true) with check (true);';
 
         function showCopied() {
           btn.textContent = '✓ Copied!';
@@ -525,15 +526,17 @@
       </div>
 
       <div class="shot">
-        <img src="Folder/Setup_Supabase_SQL.png" alt="Setup_Supabase_SQL">
+        <!-- Replace with: <img src="Folder/Setup_Supabase_SQL.png" alt="Supabase SQL editor run success" style="width:100%; border-radius:6px;"> -->
+        <span class="shot-type">PNG NEEDED</span>
+        <div class="shot-label">Folder/Setup_Supabase_SQL.png</div>
+        <div class="shot-desc">Screenshot: Supabase SQL Editor with the setup script pasted and the green "Success. No rows returned" confirmation visible.</div>
       </div>
 
       <div class="shot">
-        <img src="Folder/Setup_Supabase_Keys1.png" alt="Setup_Supabase_Keys1">
-      </div>
-      
-      <div class="shot">
-        <img src="Folder/Setup_Supabase_Keys2.png" alt="Setup_Supabase_Keys2">
+        <!-- Replace with: <img src="Folder/Setup_Supabase_Keys.png" alt="Supabase project URL and anon key" style="width:100%; border-radius:6px;"> -->
+        <span class="shot-type">PNG NEEDED</span>
+        <div class="shot-label">Folder/Setup_Supabase_Keys.png</div>
+        <div class="shot-desc">Screenshot: two side-by-side or stacked captures — Supabase Project Settings → Data API (showing Project URL) and Project Settings → API Keys (showing anon public key). Blur the actual values.</div>
       </div>
 
       <div class="callout callout-tip">
@@ -555,7 +558,10 @@
       </div>
 
       <div class="shot">
-        <video src="Folder/Setup_HealthCheck.mp4" autoplay loop muted playsinline style="width:100%; border-radius:6px;"></video>
+        <!-- Replace with: <img src="Folder/Setup_HealthCheck.png" alt="Health Check clean result" style="width:100%; border-radius:6px;"> -->
+        <span class="shot-type">PNG NEEDED</span>
+        <div class="shot-label">Folder/Setup_HealthCheck.png</div>
+        <div class="shot-desc">Screenshot: Health Check results panel showing 0 errors, 0 warnings, green all-clear state.</div>
       </div>
 
       <div class="callout callout-tip">
@@ -564,22 +570,27 @@
       </div>
     </div>
 
-    <!-- STEP 8: iOS PWA Install -->
+    <!-- BONUS: Mobile Install (iOS + Android) -->
     <div class="setup-step" id="step-pwa">
       <div class="setup-step-head">
         <span class="setup-step-num">BONUS</span>
-        <h2>Add to Home Screen on iPhone or iPad</h2>
+        <h2>Install on your phone or tablet</h2>
         <span class="setup-step-required opt">Optional · ~1 min</span>
       </div>
       <div class="setup-step-body">
-        <p>Once the app is live at your Cloudflare URL, you can install it on your iPhone or iPad so it opens like a native app — full screen, no browser bar, with its own icon on your home screen. This works in Safari only; Chrome and Firefox on iOS can't install web apps to the home screen.</p>
+        <p>The app can be installed on both iPhone/iPad and Android devices so it opens like a native app — full screen, no browser bar, with its own icon on your home screen.</p>
+      </div>
+
+      <h3 style="font-family:var(--font-head); font-size:18px; margin:0 0 10px; color:var(--text);">iPhone &amp; iPad (Safari only)</h3>
+      <div class="setup-step-body">
+        <p>This only works in Safari. Chrome and Firefox on iOS cannot install web apps to the home screen.</p>
         <ol>
           <li>Open your Cloudflare URL in <strong>Safari</strong> on your iPhone or iPad.</li>
-          <li>Wait for the page to fully load — you should see the app's first-run setup screen or the Browse panel if you've already connected your Sheet.</li>
+          <li>Wait for the page to fully load — you should see the first-run setup screen or the Browse panel if already connected.</li>
           <li>Tap the <strong>Share</strong> button at the bottom of the screen (the box with an arrow pointing up).</li>
           <li>Scroll down in the share sheet and tap <strong>Add to Home Screen</strong>.</li>
           <li>Give it a name (or keep the default) and tap <strong>Add</strong> in the top right.</li>
-          <li>The app now appears on your home screen with its own icon. Opening it from there launches it full-screen.</li>
+          <li>The app now appears on your home screen with its own icon and opens full-screen.</li>
         </ol>
       </div>
       <div class="shot">
@@ -591,13 +602,39 @@
       <div class="shot">
         <img src="Folder/iOS_Background.jpg" alt="iOS_Background">
       </div>
-      <div class="callout callout-caution">
-        <div class="callout-title">Must be Safari — not Chrome or Firefox</div>
-        "Add to Home Screen" for web apps only works in Safari on iOS. If you open the Cloudflare URL in Chrome or Firefox on your iPhone, the option will either be missing or won't create a proper installed app experience. Once installed, you can use it in any orientation and it opens without the browser's address bar.
+      <div class="callout callout-tip">
+        <div class="callout-title">iOS home screen icon</div>
+        The <code>apple-touch-icon.png</code> file in your GitHub repository is what gives the home screen icon its correct appearance on iOS — without it, iOS falls back to a generic screenshot thumbnail.
       </div>
+
+      <h3 style="font-family:var(--font-head); font-size:18px; margin:24px 0 10px; color:var(--text);">Android (Chrome)</h3>
+      <div class="setup-step-body">
+        <p>On Android, installation works through Chrome and is even more straightforward — Chrome often prompts you automatically.</p>
+        <ol>
+          <li>Open your Cloudflare URL in <strong>Chrome</strong> on your Android device.</li>
+          <li>Wait for the page to fully load.</li>
+          <li>Tap the <strong>three-dot menu</strong> in the top right corner.</li>
+          <li>Tap <strong>Add to Home screen</strong> (or <strong>Install app</strong> if Chrome shows that option instead — both do the same thing).</li>
+          <li>Give it a name and tap <strong>Add</strong>. The app icon will appear on your home screen.</li>
+          <li>Opening it from the home screen launches it full-screen without the browser bar.</li>
+        </ol>
+      </div>
+      <div class="shot">
+        <!-- Replace with: <img src="Folder/Setup_Android_Install.png" alt="Android Chrome Add to Home Screen" style="width:100%; border-radius:6px;"> -->
+        <span class="shot-type">PNG NEEDED</span>
+        <div class="shot-label">Folder/Setup_Android_Install.png</div>
+        <div class="shot-desc">Screenshot: Android Chrome three-dot menu open showing "Add to Home screen" or "Install app" option highlighted.</div>
+      </div>
+      <div class="shot">
+        <!-- Replace with: <img src="Folder/Setup_Android_HomeScreen.png" alt="App installed on Android home screen" style="width:100%; border-radius:6px;"> -->
+        <span class="shot-type">PNG NEEDED</span>
+        <div class="shot-label">Folder/Setup_Android_HomeScreen.png</div>
+        <div class="shot-desc">Screenshot: Android home screen with the list builder icon installed and visible.</div>
+      </div>
+
       <div class="callout callout-tip">
         <div class="callout-title">Offline use after install</div>
-        After installing and loading the app once with signal, it'll keep working for the rest of that session even if you lose connection. The <code>apple-touch-icon.png</code> file in your GitHub repository is what gives the home screen icon its correct appearance on iOS — without it, iOS falls back to a generic screenshot thumbnail.
+        On both iOS and Android, once the app has loaded once with signal it'll keep working for the rest of that session even if you lose connection — handy at a venue with patchy wifi.
       </div>
     </div>
 

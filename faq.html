@@ -109,6 +109,18 @@
 
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+        The app isn't loading correctly — could my browser's auto-translate be the cause?
+        <span class="faq-q-mark">+</span>
+      </div>
+      <div class="faq-a">
+        <p>Yes, this is a known cause of loading failures. If your browser's automatic translation feature is active on the setup guide or the app itself, it can interfere with how the page loads and prevent the app from functioning correctly.</p>
+        <p>To disable it: in <strong>Chrome</strong>, click the translate icon in the address bar and select <strong>Never translate this site</strong>. In <strong>Safari</strong>, go to <strong>Settings → Translation</strong> and make sure the site isn't set to auto-translate. In <strong>Firefox</strong>, click the translate icon in the toolbar and choose <strong>Never translate this language</strong>.</p>
+        <p>The app has its own built-in language support (English and French, plus any language you add via your Sheet) — browser translation is not needed and should be turned off for this site.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this.parentElement)">
         Can I update the card data later — new units, errata, etc.?
         <span class="faq-q-mark">+</span>
       </div>
@@ -210,12 +222,13 @@
 
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this.parentElement)">
-        How do I install it on my iPhone or iPad?
+        How do I install it on my phone or tablet?
         <span class="faq-q-mark">+</span>
       </div>
       <div class="faq-a">
-        <p>Open your Cloudflare URL in <strong>Safari</strong> (not Chrome or Firefox — those can't install web apps on iOS). Once the page has loaded, tap the <strong>Share button</strong> (the box with an arrow at the bottom of the screen), scroll down, and tap <strong>Add to Home Screen</strong>. Give it a name and tap Add. It'll appear on your home screen with its own icon and open full-screen, just like a native app.</p>
-        <p>The <code>apple-touch-icon.png</code> file in your repository is what gives the icon its correct appearance — without it, iOS uses a generic screenshot instead. Full step-by-step instructions with screenshots are in the <a href="setup.html#step-pwa">Setup Guide</a>.</p>
+        <p><strong>iPhone / iPad:</strong> Open your Cloudflare URL in <strong>Safari</strong> (not Chrome or Firefox — those can't install web apps on iOS). Once loaded, tap the <strong>Share button</strong> (box with an arrow at the bottom), scroll down, and tap <strong>Add to Home Screen</strong>. Give it a name and tap Add. The <code>apple-touch-icon.png</code> file in your repository is what gives the icon its correct appearance — without it, iOS uses a generic screenshot instead.</p>
+        <p><strong>Android:</strong> Open your Cloudflare URL in <strong>Chrome</strong>. Tap the <strong>three-dot menu</strong> in the top right, then tap <strong>Add to Home screen</strong> or <strong>Install app</strong>. Give it a name and tap Add. It'll appear on your home screen and open full-screen just like a native app.</p>
+        <p>Full step-by-step instructions with screenshots for both are in the <a href="setup.html#step-pwa">Setup Guide</a>.</p>
       </div>
     </div>
 
